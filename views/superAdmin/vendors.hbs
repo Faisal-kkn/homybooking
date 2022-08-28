@@ -1,0 +1,76 @@
+
+
+            <div class="page-content-wrapper ">
+
+                <div class="container-fluid">
+
+                    <!-- end page title end breadcrumb -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap"
+                                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>mobile</th>
+                                                <th>email</th>
+                                                <th> address</th>
+                                                <th>request</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each vendors}}
+                                            <tr>
+                                                <td>{{inc @index}}</td>
+                                                <td><a href="/super_admin/vendor/hotel/{{this._id}}" class="text-primary">{{this.fullName}}</a>
+                                                </td>
+                                                <td>{{this.mobile}}</td>
+                                                <td>{{this.email}}</td>
+                                                <td>{{this.address}}</td>
+                                                {{#if request}}
+                                                <td>
+                                                    {{#if this.status}}
+                                                    <a href="/super_admin/vendor/block/{{this._id}}" class="btn btn-outline-danger waves-effect waves-light"><i
+                                                            class="mdi mdi-block-helper mr-2"></i>Block</a>
+                                                    {{else}}
+                                                    <a href="/super_admin/vendor/unblock/{{this._id}}" class="btn btn-outline-warning waves-effect waves-light"><i
+                                                            class="mdi mdi mdi-check-all mr-2"></i>Unblock</a>
+                                                    {{/if}}
+                                                </td>
+                                                {{else}}
+                                                    <td>
+                                                        <a href="/super_admin/vender_status/{{this._id}}" class="btn btn-outline-success waves-effect waves-light"><i
+                                                                class="mdi mdi-account-check mr-2"></i>Accept</a>
+                                                    </td>
+                                                    {{/if}}
+                                                
+
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+
+                </div><!-- container -->
+
+            </div> <!-- Page content Wrapper -->
+
+        </div> <!-- content -->
+
+        {{!-- <footer class="footer">
+            © 2022 Homy by Mannatthemes.
+        </footer> --}}
+
+    </div>
+    <!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

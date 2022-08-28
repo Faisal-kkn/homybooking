@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <!-- ========== SEO ========== -->
+    <title>Hotel Managment System</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="" name="author">
+    <link rel="icon" href="/images/favicon.png">
+    {{#if adminPage}}
+    {{#if table}}
+    <!-- DataTables -->
+    <link href="/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    {{/if}}
+    <!-- Responsive datatable examples -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+    {{else}}
+    {{!--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"> --}}
+    <!-- ========== User STYLESHEETS ========== -->
+    <link href="/stylesheets/t-datepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/t-datepicker-blue.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/stylesheets/jquery.mmenu.css">
+    <link rel="stylesheet" href="/revolution/css/layers.css">
+    <link rel="stylesheet" href="/revolution/css/settings.css">
+    <link rel="stylesheet" href="/revolution/css/navigation.css">
+    <link rel="stylesheet" href="/stylesheets/animate.min.css">
+    <link rel="stylesheet" href="/stylesheets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/stylesheets/daterangepicker.css">
+    <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/responsive.css">
+    <!-- ========== ICON FONTS ========== -->
+    {{!--
+    <link href="fonts/font-awesome.min.css" rel="stylesheet"> --}}
+    <link href="/fonts/flaticon.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0070eff13e.js" crossorigin="anonymous"></script>
+    <!-- ========== GOOGLE FONTS ========== -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700%7CRoboto:100,300,400,400i,500,700"
+        rel="stylesheet">
+    {{/if}}
+
+</head>
+
+<body class="fixed-left">
+    {{#if user}}
+    {{>user-header}}
+    {{/if}}
+
+    {{#if adminPage}}
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    {{#if vendorHeader}}
+    {{>vendor-header}}
+    {{/if}}
+
+    {{#if superAdmin}}
+    {{>superAdmin-header}}
+    {{/if}}
+    
+    {{{body}}}
+
+    {{else}}
+    <!-- ========== PRELOADER ========== -->
+    <div class="loader loader3">
+        <div class="loader-inner">
+            <div class="spin">
+                <span></span>
+                <img src="/images/main-logo.png" alt="HOMY Hotel Managment System">
+            </div>
+        </div>
+    </div>
+    {{{body}}}
+    {{>user-footer}}
+    {{/if}}
+    {{#if adminPage}}
+    <!-- jQuery  -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+<script defer src="https://cdn.crop.guide/loader/l.js?c=PMBVHZ"></script>
+
+
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/modernizr.min.js"></script>
+    <script src="/assets/js/detect.js"></script>
+    <script src="/assets/js/fastclick.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/jquery.blockUI.js"></script>
+    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/jquery.nicescroll.js"></script>
+    <script src="/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/assets/js/validation.js"></script>
+
+    <!-- Required datatable js -->
+    <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {{#if superAdmin}}
+    
+    <script>
+        const labels = [
+            'PayPal',
+            'Razorpay',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [{{ totalAmount.paypal.[0].total }}, {{ totalAmount.razorpay.[0].total }}],
+}]
+};
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+</script>
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+    {{else}}
+    <script>
+        const labels = [
+            'PayPal',
+            'Razorpay',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [{{ totalAmount.paypal.[0].total }}, {{ totalAmount.razorpay.[0].total }}],
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+        const myChart = new Chart(
+            document.getElementById('myChart2'),
+            config
+        );
+    </script>
+    {{/if}}
+    <script>
+        $('#drop-button').click(function (event) {
+            if (event.target.tagName === 'SPAN') {
+                alert('span pressed!');
+            }
+        });
+    </script>
+    <script src="/assets/plugins/chart.js/chart.min.js"></script>
+    <script src="/assets/pages/dashboard.js"></script>
+    <script src="/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="/assets/plugins/datatables/jszip.min.js"></script>
+    <script src="/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="/assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="/assets/plugins/datatables/buttons.colVis.min.js"></script>
+    <!-- Responsive examples -->
+    <script src="/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="/assets/pages/datatables.init.js"></script>
+
+    <!-- App js -->
+    <script src="/assets/js/app.js"></script>
+    {{else}}
+    <!-- ========== User JAVASCRIPT ========== -->
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="/javascripts/script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myModal').modal('hide');
+            $('#myModal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#myModal').modal('show');
+        });
+</script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myModal').modal('show');
+        }); 
+    </script>
+    <script src="/javascripts/t-datepicker.min.js"></script>
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+    <script>
+            $(document).ready(function () {
+                // Call global the function
+                $('.t-datepicker').tDatePicker({
+                    // options here
+                });
+        })
+        </script>
+
+    <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap-select.min.js"></script>
+    <script src="/javascripts/jquery.mmenu.js"></script>
+    <script src="/javascripts/jquery.inview.min.js"></script>
+    <script src="/javascripts/jquery.countdown.min.js"></script>
+    <script src="/javascripts/jquery.magnific-popup.min.js"></script>
+    <script src="/javascripts/owl.carousel.min.js"></script>
+    <script src="/javascripts/owl.carousel.thumbs.min.js"></script>
+    <script src="/javascripts/isotope.pkgd.min.js"></script>
+    <script src="/javascripts/imagesloaded.pkgd.min.js"></script>
+    <script src="/javascripts/masonry.pkgd.min.js"></script>
+    <script src="/javascripts/wow.min.js"></script>
+    <script src="/javascripts/countup.min.js"></script>
+    <script src="/javascripts/moment.min.js"></script>
+    <script src="/javascripts/daterangepicker.js"></script>
+    <script src="/javascripts/parallax.min.js"></script>
+    <script src="/javascripts/smoothscroll.min.js"></script>
+    <script src="/javascripts/instafeed.min.js"></script>
+    <script src="/javascripts/validation.js"> </script>
+    <script src="/javascripts/ajax.js"></script>
+    <script src="/javascripts/main.js"></script>
+    <!-- ========== REVOLUTION SLIDER ========== -->
+    <script src="/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    {{/if}}
+
+</body>
+
+</html>

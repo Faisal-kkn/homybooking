@@ -1,0 +1,93 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+        <!-- end page title end breadcrumb -->
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">Room Details</h4>
+                        <form action="/vendor/hotel/rooms/addroom" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 class="input-title">Room Count</h6>
+                                    <input type="text" class="form-control" name="room_count" id="room-count" onkeyup="validateRoomCount()">
+                                    <span id="room-count-err" class="form-error-msg"></span>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="input-title">Room Type</h6>
+                                    <div class="input-group">
+                                        <select class="form-control" name="type">
+                                            {{#each roomData.roomTypes}}
+                                            <option value="{{this.type}}">{{this.type}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="input-title">Room Status</h6>
+                                    <div class="input-group text-capitalize">
+                                        <select class="form-control" name="roomstatus">
+                                            {{#each roomData.roomstatus}}
+                                            <option value="{{this.status}}">{{this.status}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="input-title">MRP Price</h6>
+                                    <input type="text" class="form-control" maxlength="25" name="mrpprice"
+                                        id="mrpprice" onkeyup="validateMrpPrice()">
+                                    <span id="mrpprice-err" class="form-error-msg"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="input-title">Sales Price</h6>
+                                    <input type="text" class="form-control" maxlength="25" name="salesprice"
+                                        id="salesprice" onkeyup="validateSalesPrice()">
+                                    <span id="salesprice-err" class="form-error-msg"></span>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h6 class="input-title">Photos</h6>
+                                    <input class="form-control" type="file" name="images" multiple required>
+                                    <span id="image-err" class="form-error-msg">{{imageErr}}</span>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h6 class="input-title">Description</h6>
+                                    <div class="input-group">
+                                        <textarea class="form-control w-100" rows="3" id="description" name="description"
+                                            onkeyup="validateRoomDescription()"></textarea>
+                                        <span id="description-err" class="form-error-msg"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="submit-err" class="form-error-msg"></span>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light mt-3 w-100"
+                                onclick="return validateAddRoom(event)">
+                                Add Room
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div><!-- end col -->
+        </div>
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

@@ -1,0 +1,57 @@
+<section style="background-color: #eee;">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 bg-light p-3">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                    alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <h5 class="my-3">{{userProfile.name}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/updateprofile" method="POST">
+                                    <div class="form-group user_inp mb-lg-3">
+                                        <label for="signupname" style="margin: 0;" class="text-capitalize">
+                                            Full Name
+                                        </label>
+                                        <input type="text" class="form-control user" id="signupname"
+                                            aria-describedby="nameHelp" name="name" onkeyup="validateName()"
+                                            value="{{userProfile.name}}">
+                                        <span id="signupnameerr" class="form-error-msg"></span>
+                                    </div>
+                                    <div class="form-group user_inp mb-lg-3">
+                                        <label for="email" style="margin: 0;" class="text-capitalize">
+                                            Email Address
+                                        </label>
+                                        <input type="email" class="form-control user" id="email" name="email"
+                                            onkeyup="validateEmail()" value="{{userProfile.email}}">
+                                        <span id="emailError" class="form-error-msg">{{profileErr}}</span>
+
+                                    </div>
+                                    {{!-- <div class="form-group pas_inp mb-lg-3">
+                                        <label for="userpassword" style=" width: 90%; margin: 0;"
+                                            class="text-capitalize">Password</label>
+                                        <input type="password" class="form-control password" id="userpassword"
+                                            name="password" onkeyup="validatePassword()">
+                                        <span id="password-error" class="form-error-msg"></span>
+                                    </div> --}}
+
+                                    <button type="submit" class="btn sub-btn"
+                                        onclick="return validateSigninForm(event)">Submit</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

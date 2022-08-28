@@ -1,0 +1,152 @@
+<!-- ========== ROOM SLIDER ========== -->
+<div id="rev-slider-room" class="rev_slider room-slider-full-width" style="display:none; background: #444;"
+    data-version="5.4.5">
+    <ul>
+        {{#each singleHotel.image}}
+        <li data-transition="slidingoverlayright">
+            <img src="/uploads/{{this}}" alt="Image" title="Image" data-bgposition="center center" data-bgfit="cover"
+                data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina="">
+        </li>
+        {{/each}}
+    </ul>
+    <!-- ROOM TITLE -->
+    <div class="tp-static-layers">
+        <h1 class="tp-static-layer tp-caption" data-startslide="0" data-endslide="99"
+            data-fontsize="['80','60','50','40']" data-lineheight="['60','50','40','30']"
+            data-frames='[{"delay":2000,"speed":750,"sfxcolor":"#ffffff","sfx_effect":"blockfromleft","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoleft","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
+            data-x="['left','left','left','left']" data-hoffset="['15','15','15','15']"
+            data-y="['middle','middle','middle','middle']" data-voffset="['-30','-30','0','0']"
+            style="z-index: 11; color: #fff;">
+            {{singleHotel.hotel_name}}</h1>
+    </div>
+    <!-- ROOM PRICE -->
+    {{!-- <div class="tp-static-layers">
+        <span class="tp-static-layer tp-caption room-price" data-startslide="0" data-endslide="99"
+            data-width="[100, 100, 100, 60]" data-height="[100, 100, 100, 60]" data-fontsize="['28','28','28','18']"
+            data-lineheight="['100','100','100','60']"
+            data-frames='[{"delay":2000,"speed":750,"sfxcolor":"#ffffff","sfx_effect":"blockfromleft","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoleft","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
+            data-x="['right','right','right','right']" data-hoffset="['90','90','15','15']"
+            data-y="['middle','middle','middle','middle']" data-voffset="['-30','-30','0','0']"
+            style="z-index: 11; color: #fff; text-align: center;">
+            €89<small>/night</small>
+        </span>
+    </div> --}}
+</div>
+<!-- ========== MAIN ========== -->
+<main class="room">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- ITEM -->
+                <div class="hotel-details mb-2">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-4">
+                                    <div class="hotel-label">Location : </div>
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8">
+                                    <div class="hotel-value">{{singleHotel.location}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-4">
+                                    <div class="hotel-label">Front Office : </div>
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8">
+                                    <div class="hotel-value"><a
+                                            href="tel:{{singleHotel.front_office}}">{{singleHotel.front_office}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-4">
+                                    <div class="hotel-label">Mobile : </div>
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8">
+                                    <div class="hotel-value"><a
+                                            href="tel:{{singleHotel.mobile}}">{{singleHotel.mobile}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotel-details mb-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-4">
+                                    <div class="hotel-label">Email : </div>
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8">
+                                    <div class="hotel-value"><a
+                                            href="mailto:{{singleHotel.email}}">{{singleHotel.email}}</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-4">
+                                    <div class="hotel-label">Hotel Type : </div>
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8">
+                                    <div class="hotel-value">{{singleHotel.type}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-4 col-4">
+                                    <div class="hotel-label">Address : </div>
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8">
+                                    <div class="hotel-value">{{singleHotel.address}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-12">
+                            <div class="hotel-value">
+                                <iframe src="{{singleHotel.map}}" width="100%" height="250" style="border:0;"
+                                    allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <p class="dropcap my-5">{{singleHotel.description}} </p>
+        {{!-- <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam ut, asperiores voluptatibus quo rem iusto
+            laborum, laudantium corrupti ea esse officia placeat beatae! Ducimus quasi nisi odio architecto repudiandae
+            illo sunt nulla quia obcaecati
+            blanditiis? Doloremque commodi deserunt corporis, maiores, quam ipsam voluptates beatae necessitatibus,
+            sapiente impedit sunt cupiditate odio, officiis quo debitis distinctio! Tenetur quibusdam modi adipisci vel
+            ullam cum ratione itaque laborum
+            molestias nesciunt. Qui itaque saepe obcaecati quo tempora natus laudantium quidem, inventore totam. Nobis
+            incidunt est doloribus qui vero expedita a fugit necessitatibus minus sapiente illo, commodi laudantium
+            minima quo deserunt odio repellat
+            placeat quas, perferendis, voluptates! Omnis corporis nostrum optio reprehenderit aspernatur consequuntur,
+            nisi rerum. Architecto provident alias voluptatem aliquam tenetur eius eos. Iure, earum. Asperiores
+            consectetur, dolorem animi pariatur. Magni
+            necessitatibus non hic odit nesciunt voluptatum distinctio provident, repellendus quae dolores, assumenda
+            delectus quisquam fuga velit natus cumque. Odio sint deserunt ex dolorem, culpa, sit accusantium nesciunt.
+            Dicta, nulla aperiam expedita nihil
+            at laborum! Minima ducimus, nobis quasi minus totam ab quo, quia labore nihil praesentium doloremque
+            recusandae! Voluptas delectus distinctio architecto aliquid eligendi nostrum odio a culpa modi cumque
+            mollitia id, consequuntur, labore, ut minima
+            illum. Repellendus cumque veniam quae odit enim.
+        </p> --}}
+        
+    </div>
+</main>

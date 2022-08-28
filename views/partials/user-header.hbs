@@ -1,0 +1,94 @@
+<div class="wrapper">
+    <!-- ========== MOBILE MENU ========== -->
+    <nav id="mobile-menu"></nav>
+    <!-- ========== WRAPPER ========== -->
+    <!-- ========== TOP MENU ========== -->
+    {{!-- <div class="topbar">
+        <div class="container">
+            <div class="welcome-mssg text-light">
+                Welcome to Homy
+            </div>
+            <div class="top-right-menu">
+                <ul class="top-menu">
+                    <li class="d-none d-md-inline">
+                        <a href="tel:" class="text-light">
+                            <i class="fa fa-phone"></i>+91 000 000 0000
+                        </a>
+                    </li>
+                    <li class="d-none d-md-inline">
+                        <a href="mailto:" class="text-light text-lowercase">
+                            <i class="fa fa-envelope-o "></i>demo@demo.com
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> --}}
+
+    <!-- ========== HEADER ========== -->
+    <header class="horizontal-header sticky-header border-header" data-menutoggle="991">
+        <div class="container">
+            <!-- BRAND -->
+            <div class="brand">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/images/main-logo.png" alt="Hotel Homy " class="img-fluid" width="100px">
+                    </a>
+                </div>
+            </div>
+            <!-- MOBILE MENU BUTTON -->
+            <div id="toggle-menu-button" class="toggle-menu-button">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            <!-- MAIN MENU -->
+            <nav id="main-menu" class="main-menu">
+                <ul class="menu">
+                    <li class="menu-item dropdown active">
+                        <a href="/">HOME</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="/about">About</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="/rooms">Rooms</a>
+                    </li>
+                    <li class="menu-item dropdown">
+                        <a href="/hotels">Hotels</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/contact">CONTACT US</a>
+                    </li>
+                    <li class="menu-item menu-btn dropdown">
+                        {{#if username}}
+                        <a href="#" class="btn">
+                            <i class="fa fa-user"></i>{{username.name}}
+                        </a>
+                        <ul class="submenu">
+                            <li class="menu-item">
+                                <a href="/bookings">Booked</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/wishlist">Wishlist</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/profile">Profile</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/wallet">wallet</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/logout">Logout</a>
+                                    </li>
+                                    </ul>
+                                    {{else}}
+                                    <a href="/login" class="btn">
+                                        <i class="fa fa-user"></i>Login
+                                    </a>
+                                    {{/if}}
+                                    </li>
+                                    </ul>
+                                    </nav>
+                                    </div>
+                                    </header>

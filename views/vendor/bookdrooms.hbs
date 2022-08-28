@@ -1,0 +1,201 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+
+        <!-- end page title end breadcrumb -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="icon-contain">
+                                    <div class="row">
+                                        <div class="col-2 align-self-center">
+                                            <i class="far fa-gem text-gradient-danger"></i>
+                                        </div>
+                                        <div class="col-10 text-right">
+                                            <h5 class="mt-0 mb-1">{{bookdrooms.razorpay.[0].total}}</h5>
+                                            <p class="mb-0 font-12 text-muted">Razorpay</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="icon-contain">
+                                    <div class="row">
+                                        <div class="col-2 align-self-center">
+                                            <i class="fas fa-tasks text-gradient-success"></i>
+                                        </div>
+                                        <div class="col-10 text-right">
+                                            <h5 class="mt-0 mb-1">{{bookdrooms.paypal.[0].total}}</h5>
+                                            <p class="mb-0 font-12 text-muted">Paypal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body justify-content-center">
+                                <div class="icon-contain">
+                                    <div class="row">
+                                        <div class="col-2 align-self-center">
+                                            <i class="fas fa-users text-gradient-warning"></i>
+                                        </div>
+                                        <div class="col-10 text-right">
+                                            <h5 class="mt-0 mb-1">{{bookdrooms.booked}}</h5>
+                                            <p class="mb-0 font-12 text-muted">Booked Rooms</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="card ">
+                            <div class="card-body">
+                                <div class="icon-contain">
+                                    <div class="row">
+                                        <div class="col-2 align-self-center">
+                                            <i class="fas fa-database text-gradient-primary"></i>
+                                        </div>
+                                        <div class="col-10 text-right">
+                                            <h5 class="mt-0 mb-1">{{bookdrooms.total}}</h5>
+                                            <p class="mb-0 font-12 text-muted">Total Amount</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>User Details</th>
+                                    {{!-- <th>Mobile</th> --}}
+                                    {{!-- <th>Email</th> --}}
+                                    <th>Booking Date</th>
+                                    {{!-- <th>Check Out</th> --}}
+                                    {{!-- <th>Booked Date</th> --}}
+                                    <th>Payment Details</th>
+                                    {{!-- <th>Payment Status</th> --}}
+                                    {{!-- <th>Booking Status</th> --}}
+                                    <th>Status</th>
+                                    <th>Button</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each bookdrooms.rooms}}
+
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td class="text-success"><b class="text-primary">Name : <span
+                                                class="h6">{{this.name}}</span></b> <br>
+                                        Mobile : {{this.mobile}}<br>
+                                        Email : {{this.email}}
+                                    </td>
+                                    {{!-- <td></td> --}}
+                                    {{!-- <td>{{this.}}</td> --}}
+                                    <td><small class="text-secondary"> Check-In :</small> <br>
+                                        {{this.Date.[0]}} <br>
+                                        <small class="text-secondary">Check-out :</small> <br> {{this.checkOutDate}}
+                                        <br>
+                                        <small class="text-secondary">Booked Date : </small> <br><span
+                                            class="text-warning">{{this.currentDate}}</span>
+                                    </td>
+                                    {{!-- <td></td> --}}
+                                    {{!-- <td></td> --}}
+                                    <td><small class="text-secondary">Payment Method :
+                                        </small><br>{{this.paymentMethod}} <br>
+                                        <small class="text-secondary">Payment Status : </small> <br>
+                                        {{this.paymentStatus}} <br>
+                                        <small class="text-secondary">Room Type : </small> <br>{{this.room.type}}
+                                    </td>
+                                    {{!-- <td></td> --}}
+                                    <td>
+                                        <small class="text-secondary">Booking Status : </small>
+                                        <br>{{this.bookingStatus}} <br>
+                                        {{!-- <small class="text-secondary">checkout Status : </small>
+                                        <br>{{this.CheckOutStatus}} <br> --}}
+                                        {{#if this.totalAmount.wallet}}
+                                        <small>Wallet :</small> ₹{{this.totalAmount.wallet}}<br>
+                                        <small>Online :</small> ₹{{this.totalAmount.online}} <br>
+                                        {{else}}
+                                        <small>Paid : </small> <br>
+                                        {{this.totalAmount}} <br>
+                                        <small>Balance : </small> <br>
+                                        {{this.pendingAmount}}
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if this.checkIn_Status}}
+                                        <a href="/vendor/room/checkIn/{{this._id}}" class="btn btn-outline-success waves-effect waves-light">
+                                            <i class="fas fa-door-closed mr-2"></i>CheckIn
+                                        </a>
+                                        {{else}}
+                                        {{#if_eq this.paymentStatus "success"}}
+                                        {{#if_eq this.CheckOutStatus 'CheckOuted'}}
+                                        <span class="text-success">CheckOuted</span>
+                                        {{else}}
+                                        {{#if_eq this.CheckInStatus 'CheckIned'}}
+                                        <span class="text-success text-center">CheckIned</span>
+                                        {{/if_eq}} <br>
+                                        {{#if this.checkout_Status}}
+                                        <a href="/vendor/room/checkout/{{this._id}}" class="btn btn-outline-danger waves-effect waves-light">
+                                            <i class="fas fa-door-open mr-2"></i>CheckOut
+                                        </a>
+                                        {{/if}}
+                                        {{/if_eq}}
+                                        {{!-- {{else}} --}}
+                                        {{/if_eq}}
+                                        {{/if}}
+                                    
+                                    </td>
+
+                                    {{!-- {{#if this.totalAmount}}
+
+                                    {{else}}
+                                    <td>
+                                        <a href="/super_admin/user/unblock/{{this._id}}"
+                                            class="btn btn-outline-danger waves-effect waves-light"><i
+                                                class="mdi mdi-block-helper mr-2"></i>Unblock</a>
+                                    </td>
+                                    {{/if}} --}}
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+{{Now}}
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

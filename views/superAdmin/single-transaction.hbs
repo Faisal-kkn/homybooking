@@ -1,0 +1,63 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+
+        <!-- end page title end breadcrumb -->
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each transaction.Transactions}}
+
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td class="text-primary">
+                                        {{this.date}}
+                                    </td>
+                                    <td>
+                                        {{this.amount}}
+                                    </td>
+                                    <td>
+                                        {{#if this.status}}
+                                        <span class="text-success"> Paid </span>
+                                        {{else}}
+                                        <a href="/super_admin/vender_withdraw/{{../transaction._id}}"
+                                            class="btn btn-outline-success waves-effect waves-light"><i
+                                                class="mdi mdi-account-check mr-2"></i>Accept</a>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

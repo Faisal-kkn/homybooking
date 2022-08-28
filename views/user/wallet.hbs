@@ -1,0 +1,72 @@
+<div class="page-title gradient-overlay op6" style="background: url(https://preview.eagle-themes.com/html/himara/images/breadcrumb.jpg); background-repeat: no-repeat;
+      background-size: cover;">
+    <div class="container">
+        <div class="inner">
+            <h1>Hotels</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>Wallet History</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- ========== MAIN ========== -->
+<main class="rooms-list-view">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table align-middle mb-0 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each wallet}}
+                        <tr>
+                            <td style="vertical-align: middle;">{{inc @index}}</td>
+                            <td>
+                                <div class="d-flex align-items-center" style="gap:15px;">
+                                    <img src="/uploads/rooms/{{this.bookings.room.image.[0]}}" alt=""
+                                        style="width: 45px; height: 45px" class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-capitalize" style="font-weight: bold;">
+                                            {{this.bookings.room.type}} Room</p>
+                                        <p class="text-muted mb-0">{{this.bookings.currentDate}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">{{this.bookings.name}}</p>
+                                <p class="text-muted mb-0">{{this.bookings.paymentMethod}}</p>
+                            </td>
+                            {{#if this.Transactions.status}}
+                            <td>
+                                <span class="badge badge-success rounded-pill d-inline">Deposit</span>
+                            </td>
+                            {{else}}
+                            <td>
+                                <span class="badge badge-danger rounded-pill d-inline">Withdraw</span>
+                            </td>
+                            {{/if}}
+                            {{#if this.Transactions.status}}
+                            <td class="text-success">+{{this.Transactions.amount}}</td>
+                            {{else}}
+                            <td class="text-danger">-{{this.Transactions.amount}}</td>
+                            {{/if}}
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>

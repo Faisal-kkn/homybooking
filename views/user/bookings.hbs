@@ -1,0 +1,87 @@
+<div class="page-title gradient-overlay op6" style="background: url(https://preview.eagle-themes.com/html/himara/images/breadcrumb.jpg); background-repeat: no-repeat;
+      background-size: cover;">
+    <div class="container">
+        <div class="inner">
+            <h1>Hotels</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="./">Home</a>
+                </li>
+                <li>Bookings</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- ========== MAIN ========== -->
+<main class="rooms-list-view">
+    <div class="container">
+        <!-- ITEM -->
+        {{#each bookings}}
+        <div class="room-list-item">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="/bookedroom/{{this.room._id}}">
+                        <figure class="gradient-overlay-hover link-icon">
+                            <img src="/uploads/rooms/{{this.room.image.[0]}}" class="img-fluid" alt="Image">
+                        </figure>
+                    </a>
+                </div>
+                <div class="col-lg-5">
+                    <div class="room-info text-capitalize">
+                        <h3 class="room-title text-heading text-capitalize">{{this.room.type}} Room</h3>
+                        <p class="room-title  mb-1"
+                            style="overflow: hidden;text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2 ; line-clamp: 2; -webkit-box-orient: vertical; color: #2a4e6cad;">
+                            {{this.room.description}}</p>
+                        <small>Check In : {{this.Date.[0]}}</small><br>
+                        <small>Check Out :{{this.checkOutDate}}</small><br>
+                        <span>Payment Status : <strong>{{this.paymentStatus}}</strong></span>
+                        <span>Booking Status : <strong>{{this.bookingStatus}}</strong></span>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="room-price">
+                        <span class="price">
+                            {{#if this.totalAmount.wallet}}
+                            <small>Wallet :</small> ₹<strong>{{this.totalAmount.wallet}}</strong><br>
+                            <small>Online :</small> ₹<strong>{{this.totalAmount.online}}</strong><br>
+                            <small class="text-capitalize">Balance :</small>₹<strong>{{this.pendingAmount}}</strong>
+                            {{else}}
+                            <small class="text-capitalize">Total :</small> ₹<strong>{{this.fulltotal}}</strong><br>
+                            <small class="text-capitalize text-success">Paid :</small> <span class="text-success">₹</span><strong
+                                class=" text-success">{{this.totalAmount}}</strong><br>
+                            <small class="text-capitalize text-secondary">Balance :</small><span class="text-secondary">₹</span><strong
+                                class=" text-secondary">{{this.pendingAmount}}</strong>
+                            {{/if}}
+                        </span>
+                    
+                        {{#if_eq this.bookingStatus "cancelled"}}
+                        {{else}}
+                            {{#if_eq this.CheckOutStatus "CheckOuted"}}
+                            <a class="btn btn-sm" style="background: #28a745!important; color: white;"> {{this.CheckOutStatus}}</a>
+                            {{else}}
+                            {{#if cancelStatus}}
+                            <button class="btn btn-sm" disabled>Cancel</button>
+                            {{else}}
+                        <a href="/room/cancel/{{this._id}}" id="subm" class=" btn btn-sm">Cancel</a>
+                        {{/if}}
+                            {{/if_eq}}
+                        {{/if_eq}}
+                        
+                        <small
+                            style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100%;text-align: center; margin-top: 10px;">
+                            Booked Date : {{this.currentDate}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</main>
+{{!--
+<script>
+    Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
+        return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    });
+
+</script> --}}
+<!-- ========== FOOTER ========== -->

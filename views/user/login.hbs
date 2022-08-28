@@ -1,0 +1,57 @@
+<div  class="body-login">
+
+<section class="main">
+    <div class="container ">
+        <div class="row justify-content-md-center ">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 left_box">
+                <div>
+                    <h5>Lorem Ipsum Simply Text of</h5>
+                </div>
+
+                <div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus, architecto aliquam iste
+                        provident, dignissimos excepturi vel esse numquam quos consequuntur ab</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 right_box">
+                <div class="cnt">
+                    <div class="login">
+                        <h6> LOGIN </h6>
+                    {{#if logErr}}
+                    <div class="alert alert-danger" role="alert" id="checking">
+                        {{logErr}}
+                    </div>
+                    {{/if}}
+                        <form action="/login" method="POST">
+                            <div class="form-group user_inp mb-lg-0">
+                                <label for="mobile" style="margin: 0;" class="text-capitalize"> <i class="fa fa-mobile"></i> Mobile Number</label>
+                                <input type="number" class="form-control user" id="usermobile" aria-describedby="emailHelp" name="mobile"
+                                    onkeyup="validatePhone()">
+                                <span id="phone-error" class="form-error-msg"></span>
+                            </div>
+                            {{!-- <div class="form-group pas_inp mb-lg-0">
+                                <label for="userpassword" style=" width: 90%; margin: 0;" class="text-capitalize"> <i
+                                        class="fa fa-unlock-alt"></i> Password</label>
+                                <a href="#"></a>
+                                <input type="password" class="form-control password" id="userpassword" name="password" onkeyup="validatePassword()">
+                                <span id="password-error" class="form-error-msg"></span>
+
+                            </div> --}}
+
+                           <div class="d-flex justify-content-between">
+                            {{!-- <p class="forgot"> Forgot your <a href="/forgot"><span> Password ? </span></a></p> --}}
+                            <p class="forgot">No Account? <a href="/signup"><span> Sign Up </span></a></p>
+                           </div>
+
+                            <button type="submit" class="btn sub-btn" onclick="return validateForm(event)">Login</button>
+                            <span id="empty_notice" class="form-error-msg"></span>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>

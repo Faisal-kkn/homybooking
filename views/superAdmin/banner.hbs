@@ -1,0 +1,92 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+        {{!-- <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group float-right">
+                        <a href="/super_admin/hotel/add_hotel_type"><button type="button"
+                                class="btn btn-primary waves-effect waves-light mb-3">
+                                <i class="mdi mdi-home-variant mr-2"></i>Add Hotel Type
+                            </button></a>
+                    </div>
+                    <h4 class="page-title">Datatable</h4>
+                </div>
+            </div>
+        </div> --}}
+
+        <!-- end page title end breadcrumb -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="bg-light pb-3 mb-4">
+                            <form action="/super_admin/banner" method="POST" enctype="multipart/form-data">
+                                <div class="row px-3">
+                                    <div class="col-md-6">
+                                        <h6 class="input-title">Add Slider</h6>
+                                        <input type="file" class="form-control" name="slider" id="slider">
+                                        <span id="status-err" class="form-error-msg text-danger">{{imageErr}}</span>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="input-title">&nbsp;</h6>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light w-100">
+                                            Add Slider
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+<p class="m-0 text-danger px-3 mb-2">{{bannerErr}}</p>
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Slider</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each banner}}
+                                <tr>
+                                    <td>{{inc @index}}</td>
+
+                                    <td>
+                                        <img src="/uploads/banner/{{this.banner}}"
+                                            onerror="this.onerror=null;this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';"
+                                            alt="" width="100px">
+                                    </td>
+                                    <td>
+                                        <a href="/super_admin/banner/delete/{{this._id}}" class="btn btn-outline-danger waves-effect waves-light"  onclick="return confirm('Are You Sure')">
+                                            <i class="mdi mdi-close mr-2"></i>Delete
+                                        </a>
+                                       
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

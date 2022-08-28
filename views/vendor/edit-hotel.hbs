@@ -1,0 +1,208 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+        <!-- end page title end breadcrumb -->
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                                                {{!-- <p>{{editHotel.facility}}</p> --}}
+                        {{!-- <h4 class="mt-0 header-title">Hotel Details</h4> --}}
+                        <form action="/vendor/hotels/edit-hotel/{{editHotel._id}}" method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="input-title">Hotel Name</h6>
+                                    <input type="text" class="form-control" name="hotel_name" id="hotel_name"
+                                        value="{{editHotel.hotel_name}}" onkeyup="HotelName()">
+                                                                            <span id="hotel_name-err" class="form-error-msg"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="input-title">Location</h6>
+                                    <input type="text" class="form-control" maxlength="25" name="location" id="location"
+                                        value="{{editHotel.location}}" onkeyup="Hotellocation()">
+                                                                            <span id="location-err" class="form-error-msg"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="input-title">Front Office</h6>
+                                    <input class="form-control" type="number" id="front_office" name="front_office"
+                                        value="{{editHotel.front_office}}" onkeyup="validatefrontOffice()">
+                                                                            <span id="front_office-err" class="form-error-msg"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="input-title">Mobile Number</h6>
+                                    <input class="form-control" type="number" id="mobile" name="mobile"
+                                        value="{{editHotel.mobile}}" onkeyup="validateOfficeMobile()">
+                                                                            <span id="mobile-err" class="form-error-msg"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="input-title">Mail ID</h6>
+                                    <input class="form-control" type="email" id="email" name="email"
+                                        value="{{editHotel.email}}" onkeyup="validateEmail()">
+                                                                            <span id="email-err" class="form-error-msg"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="input-title">Photos</h6>
+                                    <p>Old Images</p>
+                                    {{#each editHotel.image}}
+                                        <img src="/uploads/{{this}}" alt="" style="width: 100px; height:auto;" id="" class="py-3" id="hotel-img">
+                                    {{/each}}
+                                    <p>New Images</p>
+                                    <div id="preview"></div>
+                                    <input class="form-control" type="file" id="file-input" name="images" multiple>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6 class="input-title">Hotel Type</h6>
+                                    <div class="input-group">
+                                        <select class="form-control" name="type">
+                                            {{#each hotelData.hotelTypes}}
+                                            <option value="{{this.types}}" {{#if this.selected }}selected{{/if}}>{{this.types}}</option>
+                                            {{!-- <option value="4-star">4
+                                                Star</option>
+                                            <option value="3-star">3 Star</option> --}}
+                                            {{/each}}
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6 class="input-title">Total Rooms</h6>
+                                    <input class="form-control" type="number" id="total_rooms" name="total_rooms"
+                                        value="{{editHotel.total_rooms}}" onkeyup="validateRoom()">
+                                                                            <span id="total_rooms-err" class="form-error-msg"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="input-title">Map Link</h6>
+                                    <div class="input-group">
+                                        <input class="form-control w-100" type="text" id="map" name="map" value="{{editHotel.map}}" onkeyup="MapLink()">
+                                        <span id="map-err" class="form-error-msg"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h6 class="input-title">Facility's</h6>
+                                    <div class="form-check d-flex justify-content-between flex-wrap" style=" gap:50px">
+                                        {{#each hotelData.hotelFacility}}
+                                        <div>
+                                            <input class="form-check-input" type="checkbox" id="{{this.facility}}" name="facility" value="{{this.facility}}" {{#if
+                                                this.checked}} checked {{/if}}>
+                                            <label class="form-check-label" for="{{this.facility}}">
+                                                {{this.facility}}
+                                            </label>
+                                            </div>
+                                            {{/each}}
+                                            {{!-- <div>
+                                            <input class="form-check-input" type="checkbox" id="air_conditioner"
+                                                name="air_conditioner">
+                                            <label class="form-check-label" for="air_conditioner">
+                                                Air Conditioner
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <input class="form-check-input" type="checkbox" id="swimming_pool"
+                                                name="swimming_pool" {{#if editHotel.swimming_pool}}checked{{/if}}>
+                                            <label class="form-check-label" for="swimming_pool">
+                                                Swimming Pool
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <input class="form-check-input" type="checkbox" id="wifi" name="wifi" {{#if
+                                                editHotel.wifi}}checked{{/if}}>
+                                            <label class="form-check-label" for="wifi">
+                                                WIFI
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <input class="form-check-input" type="checkbox" id="taxi" name="taxi" {{#if
+                                                editHotel.taxi}}checked{{/if}}>
+                                            <label class="form-check-label" for="taxi">
+                                                Taxi
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <input class="form-check-input" type="checkbox" id="5" name="test" {{#if
+                                                editHotel.test}}checked{{/if}}>
+                                            <label class="form-check-label" for="5">
+                                                checkbox
+                                            </label>
+                                        </div> --}}
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h6 class="input-title">Full Address</h6>
+                                    <div class="input-group">
+                                        <input class="form-control w-100" type="text" id="address" name="address" value="{{editHotel.address}}"
+                                            onkeyup="validateAddress()">
+                                        <span id="address-err" class="form-error-msg"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h6 class="input-title">Description</h6>
+                                    <div class="input-group">
+                                        <textarea class="form-control" rows="5" id="description"
+                                            name="description" onkeyup="validateDescription()">{{editHotel.description}}</textarea>
+                                    </div>
+                                                                            <span id="description-err" class="form-error-msg"></span>
+                                </div>
+                            </div>
+                                                        <span id="empty_notice" class="form-error-msg"></span>
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light mt-3 w-100" onclick="return validateHotel(event)">
+                                Update Hotel Data
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div><!-- end col -->
+        </div>
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->
+
+<script>
+    function previewImages() {
+
+        var preview = document.querySelector('#preview');
+
+        if (this.files) {
+            [].forEach.call(this.files, readAndPreview);
+        }
+
+        function readAndPreview(file) {
+
+            // Make sure `file.name` matches our extensions criteria
+            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                return alert(file.name + " is not an image");
+            } // else...
+
+            var reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                var image = new Image();
+                image.width = 100;
+                image.title = file.name;
+                image.src = this.result;
+                preview.appendChild(image);
+            });
+
+            reader.readAsDataURL(file);
+
+        }
+
+    }
+
+    document.querySelector('#file-input').addEventListener("change", previewImages);
+
+</script>

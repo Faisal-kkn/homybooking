@@ -1,0 +1,104 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+        .cascading-right {
+            margin-right: -50px;
+        }
+
+        @media (max-width: 991.98px) {
+            .cascading-right {
+                margin-right: 0;
+            }
+        }
+
+    </style>
+
+    <!-- Jumbotron -->
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="card cascading-right"
+                    style="
+                                                                                                                                                                                                                                                                            background: hsla(0, 0%, 100%, 0.55);
+                                                                                                                                                                                                                                                                            backdrop-filter: blur(30px);z-index: 9;
+                                                                                                                                                                                                                                                                            ">
+                    <div class="card-body p-5 shadow-5 text-center">
+                        <div class="m-b-15">
+                            <a href="./" class="logo logo-admin"><img src="/images/main-logo.png" height="70"
+                                    alt="logo"></a>
+                        </div>
+                        <h2 class="fw-bold mb-5" style="font-weight: 800;">Vendor SignUp</h2>
+                        {{#if signupErr}}
+                        <div class="alert alert-danger" role="alert" id="checking">
+                            {{signupErr}}
+                        </div>
+                        {{/if}}
+                        <form action="/vendor/signup" method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-outline mb-4 text-left">
+                                        <label class="form-label " for="form3Example3">Full Name</label>
+                                        <input type="text" id="name" name="fullName" class="form-control" onkeyup="validateFullName()" />
+                                        <span id="name-err" class="form-error-msg"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-outline mb-4 text-left">
+                                        <label class="form-label " for="form3Example3">Mobile</label>
+                                        <input type="number" id="number" name="mobile" class="form-control" onkeyup="validateMobile()" />
+                                        <span id="mobile-err" class="form-error-msg"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-outline mb-4 text-left">
+                                        <label class="form-label " for="form3Example3">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" onkeyup="validateEmail()" />
+                                        <span id="email-err" class="form-error-msg"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline mb-4  text-left">
+                                        <label class="form-label" for="form3Example4">Password</label>
+                                        <input type="password" id="password" name="password" class="form-control" onkeyup="validatePassword()" />
+                                        <span id="password-error" class="form-error-msg"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-outline mb-4 text-left">
+                                        <label class="form-label " for="image">Image</label>
+                                        <input type="file" name="image" class="form-control">
+                                        <span id="email-err" class="form-error-msg text-danger">{{imageErr}}</span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-outline mb-4  text-left">
+                                        <label class="form-label" for="form3Example4">Full Address</label>
+                                        <input type="text" id="address" name="address" class="form-control" onkeyup="validateAddress()" />
+                                        <span id="address-err" class="form-error-msg"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="empty_notice"></span>
+                            <p class="forgot text-right"><a href="/vendor"><span> Back to Login</span></a>
+                            </p>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4" onclick="return validateVendorSignup(event)">
+                                SignUp
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
+                    class="w-100 rounded-4 shadow-4" alt="" />
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

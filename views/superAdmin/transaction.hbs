@@ -1,0 +1,58 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+
+        <!-- end page title end breadcrumb -->
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>vendor</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each transaction}}
+
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td class="text-primary">
+                                        <a href="/super_admin/transactions/{{this.vendors._id}}"
+                                            class="text-primary"><strong>{{this.vendors.fullName}}</strong></a>
+                                    </td>
+                                    <td>
+                                        {{this.vendors.mobile}}
+                                    </td>
+                                    <td>
+                                        {{this.vendors.email}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

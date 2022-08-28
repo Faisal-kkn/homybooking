@@ -1,0 +1,65 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+        {{!-- <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group float-right">
+                        <a href="/super_admin/hotel/add_hotel_type"><button type="button"
+                                class="btn btn-primary waves-effect waves-light mb-3">
+                                <i class="mdi mdi-home-variant mr-2"></i>Add Hotel Type
+                            </button></a>
+                    </div>
+                    <h4 class="page-title">Datatable</h4>
+                </div>
+            </div>
+        </div> --}}
+
+        <!-- end page title end breadcrumb -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Mobile</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each users}}
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td>{{this.user.name}}</td>
+                                    <td>{{this.user.mobile}}</td>
+                                    <td>{{this.user.email}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

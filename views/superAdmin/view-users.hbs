@@ -1,0 +1,68 @@
+
+
+            <div class="page-content-wrapper ">
+
+                <div class="container-fluid">
+
+                    <!-- end page title end breadcrumb -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap"
+                                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Mobile</th>
+                                                <th>Email</th>
+                                                <th width="15%">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each usersData}}
+                                            <tr>
+                                                <td>{{inc @index}}</td>
+                                                <td><a>{{this.name}}</a></td>
+                                                <td>{{this.mobile}}</td>
+                                                <td>{{this.email}}</td>
+                                                {{#if this.status}}
+                                                <td>
+                                                    <a href="/super_admin/user/{{this._id}}"
+                                                        class="btn btn-outline-danger waves-effect waves-light"><i
+                                                            class="mdi mdi-block-helper mr-2"></i>Block</a>
+                                                </td>
+                                                {{else}}
+                                                <td>
+                                                    <a href="/super_admin/user/unblock/{{this._id}}"
+                                                        class="btn btn-outline-success waves-effect waves-light"><i
+                                                            class="mdi mdi-check-all mr-2"></i>Unblock</a>
+                                                </td>
+                                                {{/if}}
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+
+                </div><!-- container -->
+
+            </div> <!-- Page content Wrapper -->
+
+        </div> <!-- content -->
+
+        {{!-- <footer class="footer">
+            © 2022 Homy by Mannatthemes.
+        </footer> --}}
+
+    </div>
+    <!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

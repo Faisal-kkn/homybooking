@@ -1,0 +1,67 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+        .cascading-right {
+            margin-right: -50px;
+        }
+
+        @media (max-width: 991.98px) {
+            .cascading-right {
+                margin-right: 0;
+            }
+        }
+
+    </style>
+
+    <!-- Jumbotron -->
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="card cascading-right"
+                    style="
+                                                                                                                                                                                                                                                                            background: hsla(0, 0%, 100%, 0.55);
+                                                                                                                                                                                                                                                                            backdrop-filter: blur(30px);z-index: 9;
+                                                                                                                                                                                                                                                                            ">
+                    <div class="card-body p-5 shadow-5 text-center">
+                        <div class="m-b-15">
+                            <a href="#" class="logo logo-admin"><img src="/images/main-logo.png" height="70"
+                                    alt="logo"></a>
+                        </div>
+                        {{!-- <h2 class="fw-bold mb-5">Super Admin Login</h2> --}}
+                        {{#if superAdminErr}}
+                        <div class="alert alert-danger" role="alert" id="checking">
+                            {{superAdminErr}}
+                        </div>
+                        {{/if}}
+                        <form action="/super_admin/superadmin_login" method="POST">
+                            <!-- Email input -->
+                            <div class="form-outline mb-4 text-left">
+                                <label class="form-label " for="form3Example3">Username</label>
+                                <input type="text" id="username" name="username" class="form-control" />
+                                <span id="username-err" class="form-error-msg"></span>
+                            </div>
+                            <!-- Password input -->
+                            <div class="form-outline mb-4  text-left">
+                                <label class="form-label" for="form3Example4">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" />
+                                <span id="password-error" class="form-error-msg"></span>
+                            </div>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4"
+                                onclick="return validateSigninForm(event)">
+                                Login
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
+                    class="w-100 rounded-4 shadow-4" alt="" />
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

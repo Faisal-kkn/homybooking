@@ -1,0 +1,85 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group float-right">
+
+                    </div>
+                    {{!-- <h4 class="page-title">Datatable</h4> --}}
+                </div>
+            </div>
+        </div>
+
+        <!-- end page title end breadcrumb -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+
+                        <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Place</th>
+                                    <th>Available</th>
+                                    <th>Booked</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each hotels}}
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td>{{this.hotel_name}}</td>
+                                    <td>{{this.type}}</td>
+                                    <td>{{this.location}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{this.total_rooms}}</td>
+                                    <td>
+                                        {{#if this.status}}
+                                        <a href="/super_admin/vendor/hotels/bookings/{{this._id}}"
+                                            class="btn btn-outline-primary waves-effect waves-light">
+                                            <i class="mdi mdi-eye mr-2"></i>View Bookings
+                                        </a>
+                                        {{else}}
+                                        <a href="/super_admin/vendor/hotels/bookings/{{this._id}}"
+                                            class="btn btn-outline-primary waves-effect waves-light">
+                                            <i class="mdi mdi-eye mr-2"></i>View Bookings
+                                        </a>
+                                        <p class="text-danger"> This Hotel is Blocked</p>
+                                        {{/if}}
+                                    </td>
+
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

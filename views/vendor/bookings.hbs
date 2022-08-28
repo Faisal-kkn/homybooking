@@ -1,0 +1,177 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+
+        <!-- end page title end breadcrumb -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row m-0">
+                            <div class="col-md-12 mb-2">
+                                <div class="d-flex" style="gap:10px">
+                                    <div class="d-flex p-1" style="gap:10px">
+                                        <a href="/vendor/bookings">
+                                            <button type="button" class="btn btn-outline-primary waves-effect waves-light">All</button>
+                                        </a>
+                                        <a href="/vendor/bookings/last-day">
+                                            <button type="button" class="btn btn-outline-primary waves-effect waves-light">Last
+                                                Day</button>
+                                        </a>
+                                        <a href="/vendor/bookings/week">
+                                            <button type="button" class="btn btn-outline-primary waves-effect waves-light">Last
+                                                Week</button>
+                                        </a>
+                                        <a href="/vendor/bookings/month">
+                                            <button type="button" class="btn btn-outline-primary waves-effect waves-light">Last
+                                                Month</button>
+                                        </a>
+                                    </div>
+                                    <div class="ml-2 bg-light p-1">
+                                        <form action="/vendor/bookings/custom" method="POST" class="d-flex" style="gap:10px">
+                                            <input onchange="Validate()" type="date" name="from" class="form-control" id="from"
+                                                required="required" />
+                                            <input onchange="Validate()" type="date" name="to" class="form-control" id="to"
+                                                required="required" />
+                                            <button type="submit" class="btn btn-outline-primary waves-effect waves-light" style="width: 150px;"
+                                                onclick="return validateCustomDate()">Custom</button>
+                                        </form>
+                                        <span id="date-err" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>User Details</th>
+                                    {{!-- <th>Mobile</th> --}}
+                                    {{!-- <th>Email</th> --}}
+                                    <th>Booking Date</th>
+                                    {{!-- <th>Check Out</th> --}}
+                                    {{!-- <th>Booked Date</th> --}}
+                                    <th>Payment Details</th>
+                                    {{!-- <th>Payment Status</th> --}}
+                                    {{!-- <th>Booking Status</th> --}}
+                                    <th>Status</th>
+                                    {{!-- <th>Cancel</th> --}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each bookings}}
+
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td class="text-success"><b class="text-primary">Name : <span
+                                                class="h6">{{this.name}}</span></b> <br>
+                                        Mobile : {{this.mobile}}<br>
+                                        Email : {{this.email}} <br>
+                                        <span class="text-primary " style="font-size:16px">Total : {{this.fulltotal}} <br></span>
+                                    </td>
+                                    {{!-- <td></td> --}}
+                                    {{!-- <td>{{this.}}</td> --}}
+                                    <td><small class="text-secondary"> Check-In :</small> <br>
+                                        {{this.Date.[0]}} <br>
+                                        <small class="text-secondary">Check-out :</small> <br> {{this.checkOutDate}}
+                                        <br>
+                                        <small class="text-secondary">Booked Date : </small> <br><span
+                                            class="text-warning">{{this.currentDate}}</span>
+                                    </td>
+                                    {{!-- <td></td> --}}
+                                    {{!-- <td></td> --}}
+                                    <td><small class="text-secondary">Payment Method :
+                                        </small><br>{{this.paymentMethod}} <br>
+                                        <small class="text-secondary">Payment Status : </small> <br>
+                                        {{this.paymentStatus}} <br>
+                                        <small class="text-secondary">Room Type : </small> <br>{{this.room.type}} <br>
+                                    </td>
+                                    {{!-- <td></td> --}}
+                                    <td>
+                                        <small class="text-secondary">Booking Status : </small>
+                                        <br>{{this.bookingStatus}} <br>
+                                        {{#if this.totalAmount.wallet}}
+                                        <small>Wallet :</small> ₹{{this.totalAmount.wallet}}<br>
+                                        <small>Online :</small> ₹{{this.totalAmount.online}} <br>
+                                        <small>Balance : </small> <br>
+                                        {{this.pendingAmount}}
+                                        {{else}}
+                                        <small>Paid : </small> <br>
+                                        {{this.totalAmount}} <br>
+                                        <small>Balance : </small> <br>
+                                        {{this.pendingAmount}}
+                                        {{/if}}
+                                    </td>
+                                    {{!-- <td>
+                                        {{#if_eq this.bookingStatus "cancelled"}}
+                                        <a class="btn btn-danger waves-effect waves-light text-white border-0"
+                                            style="background-color: #dc3545;">cancelled</a>
+                                        {{else}}
+                                        <a href="/super_admin/booking/cancel/{{this._id}}"
+                                            class="btn btn-outline-danger waves-effect waves-light"><i
+                                                class="mdi mdi-close mr-2"></i>Cancel</a>
+                                        {{/if_eq}}
+                                    </td> --}}
+                                    {{!-- {{#if this.totalAmount}}
+
+                                    {{else}}
+                                    <td>
+                                        <a href="/super_admin/user/unblock/{{this._id}}"
+                                            class="btn btn-outline-danger waves-effect waves-light"><i
+                                                class="mdi mdi-block-helper mr-2"></i>Unblock</a>
+                                    </td>
+                                    {{/if}} --}}
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->
+
+<script>
+    function Validate() {
+        var input1 = document.getElementById('from').value;
+        var input2 = document.getElementById('to').value;
+        if (input1 != "" && input2 != "") {
+            var date1 = new Date(input1);
+            var date2 = new Date(input2);
+
+            if (date2 < date1) {
+                document.getElementById('date-err').innerHTML = 'Please choose grater from date'
+                return false;
+            } else {
+                document.getElementById('date-err').innerHTML = ''
+                return true;
+            }
+        }
+    }
+
+    function validateCustomDate() {
+        if (!Validate()) {
+            return false
+        } else {
+            return true
+        }
+    }
+</script>

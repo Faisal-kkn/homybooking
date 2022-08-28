@@ -1,0 +1,81 @@
+<div class="page-content-wrapper ">
+
+    <div class="container-fluid">
+        {{!-- <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group float-right">
+                        <a href="/super_admin/hotel/add_hotel_type"><button type="button"
+                                class="btn btn-primary waves-effect waves-light mb-3">
+                                <i class="mdi mdi-home-variant mr-2"></i>Add Hotel Type
+                            </button></a>
+                    </div>
+                    <h4 class="page-title">Datatable</h4>
+                </div>
+            </div>
+        </div> --}}
+
+        <!-- end page title end breadcrumb -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="bg-light pb-3 mb-4">
+                            <form action="/super_admin/hotel/add_room_type" method="POST">
+                                <div class="row px-3">
+                                    <div class="col-md-6">
+                                        <h6 class="input-title">Room No</h6>
+                                        <input type="text" class="form-control" name="type" id="room-type">
+                                        <span id="room-type-err" class="form-error-msg"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="input-title">&nbsp;</h6>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light w-100" onclick="return validateRoomType(event)">
+                                            Add Room Type
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Types</th>
+                                    {{!-- <th>Status</th> --}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each roomTypes}}
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td>{{this.type}}</td>
+                                    {{!-- <td>{{this.email}}</td> --}}
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div><!-- container -->
+
+</div> <!-- Page content Wrapper -->
+
+</div> <!-- content -->
+
+{{!-- <footer class="footer">
+    © 2022 Homy by Mannatthemes.
+</footer> --}}
+
+</div>
+<!-- End Right content here -->
+
+</div>
+<!-- END wrapper -->

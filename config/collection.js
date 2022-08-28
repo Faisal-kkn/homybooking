@@ -1,0 +1,17 @@
+module.exports = {
+    USER_COLLECTION: 'user',
+    SUPER_ADMIN_COLLECTION: 'super_admin',
+    HOTEL_COLLECTION: 'hotels',
+    VENDOR_COLLECTION: 'vendor',
+    ROOMS_COLLECTION: 'rooms',
+    HOTEL_TYPE_COLLECTION: 'hoteltypes',
+    HOTEL_FACILITY_COLLECTION: 'hotelfacility',
+    ROOM_TYPE_COLLECTION: 'roomtypes',
+    ROOM_STATUS_COLLECTION: 'roomstatus',
+    WISHLIST_COLLECTION: 'wishlist',
+    BANNER_COLLECTION: 'banner',
+    BOOKING_COLLECTION: 'booking',
+    OFFER_COLLECTION: 'coupon',
+    WALLET_COLLECTION: 'wallet',
+    TRANSACTION_COLLECTION: 'transaction',
+}

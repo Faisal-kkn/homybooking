@@ -1,0 +1,285 @@
+<style>
+    .modal-body h1 {
+        font-weight: 900;
+        font-size: 2.3em;
+        text-transform: uppercase;
+    }
+
+    .modal-body a.pre-order-btn {
+        color: #000;
+        background-color: gold;
+        border-radius: 1em;
+        padding: 1em;
+        display: block;
+        margin: 2em auto;
+        width: 50%;
+        font-size: 1.25em;
+        font-weight: 6600;
+    }
+
+    .modal-body a.pre-order-btn:hover {
+        background-color: #000;
+        text-decoration: none;
+        color: gold;
+    }
+
+</style>
+{{#if dates}}
+{{else}}
+<div class="container">
+    <div class="row">
+
+        <div id="myModal" class="modal hide fade in" data-keyboard="false" data-backdrop="static">
+
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-body text-center">
+                        <form class="booking-form" action="/availability" method="POST">
+                            <div class="t-datepicker form-group text-dark">
+                                <div class="t-check-in bg-dark text-dark" id="check-in"></div>
+                                <div class="t-check-out bg-dark text-dark"></div>
+                                <span id="dateErr"></span>
+                            </div>
+
+                            <button type="submit" class="btn w-100" onclick="myFunction(event)">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <!--         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+<!-- ========== MAIN ========== -->
+<main class="rooms-grid-view">
+    <div class="container">
+        <div class="row">
+            <!-- ITEM -->
+
+
+            <div class="col-lg-3 col-12">
+                <div class="sidebar">
+                    <aside class="widget noborder">
+                        <div class="">
+                            <form class="booking-form" action="/availability" method="POST">
+                                <div class="t-datepicker form-group">
+                                    <div class="t-check-in text-black w-100"></div>
+                                    <div class="t-check-out text-black w-100"></div>
+                                </div>
+
+                                <button type="submit" class="btn w-100" onclick="myFunction(event)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    Search
+                                </button>
+                            </form>
+                        </div>
+
+                    </aside>
+                    <aside class="widget">
+                        <h4 class="widget-title">CATEGORIES</h4>
+                        <ul class="categories">
+                            <li>
+                                <a href="/rooms/all">All</a>
+                            </li>
+                            {{#each roomTypes}}
+                            <li>
+                                <a href="/rooms/{{this.type}}">{{this.type}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </aside>
+                    <!-- WIDGET -->
+                    {{!-- <aside class="widget">
+                        <h4 class="widget-title">Latest Posts</h4>
+                        <div class="latest-posts">
+                            <!-- ITEM -->
+                            <div class="latest-post-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <figure class="gradient-overlay-hover link-icon sm">
+                                            <a href="#">
+                                                <img src="images/blog/blog-post1.jpg" class="img-fluid" alt="Image">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="post-details">
+                                            <h6 class="post-title">
+                                                <a href="#">10 Tips for Holiday Travel</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ITEM -->
+                            <div class="latest-post-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <figure class="gradient-overlay-hover link-icon sm">
+                                            <a href="#">
+                                                <img src="images/blog/blog-post2.jpg" class="img-fluid" alt="Image">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="post-details">
+                                            <h6 class="post-title">
+                                                <a href="#">Are you ready to enjoy your holidays</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ITEM -->
+                            <div class="latest-post-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <figure class="gradient-overlay-hover link-icon sm">
+                                            <a href="#">
+                                                <img src="images/blog/blog-post3.jpg" class="img-fluid" alt="Image">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="post-details">
+                                            <h6 class="post-title">
+                                                <a href="#">Honeymoon in Hotel Himara</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ITEM -->
+                            <div class="latest-post-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <figure class="gradient-overlay-hover link-icon sm">
+                                            <a href="#">
+                                                <img src="images/blog/blog-post4.jpg" class="img-fluid" alt="Image">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="post-details">
+                                            <h6 class="post-title">
+                                                <a href="#">Travel Gift Ideas for Every Type of
+                                                    Traveler</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ITEM -->
+                            <div class="latest-post-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <figure class="gradient-overlay-hover link-icon sm">
+                                            <a href="#">
+                                                <img src="images/blog/blog-post5.jpg" class="img-fluid" alt="Image">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="post-details">
+                                            <h6 class="post-title">
+                                                <a href="#">Breakfast with coffee and orange juic</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside class="widget">
+                        <h4 class="widget-title">Tags</h4>
+                        <div class="tagcloud">
+                            <a href="#">
+                                <span class="tag">Party</span></a>
+                            <a href="#">
+                                <span class="tag">Travel</span></a>
+                            <a href="#">
+                                <span class="tag">Wedding</span></a>
+                            <a href="#">
+                                <span class="tag">Food</span></a>
+                            <a href="#">
+                                <span class="tag">Music</span></a>
+                            <a href="#">
+                                <span class="tag">City</span></a>
+                            <a href="#">
+                                <span class="tag">Image</span></a>
+                            <a href="#">
+                                <span class="tag">Hotel</span></a>
+                        </div>
+                    </aside> --}}
+                </div>
+            </div>
+            <div class="col-lg-9 col-12">
+                <div class="row">
+                    {{#each rooms}}
+                    <div class="col-lg-6 col-md-6">
+                        <div class="room-grid-item">
+                            <figure class="gradient-overlay-hover link-icon">
+                                <a href="/room/{{this._id}}">
+                                    <div class="room-img"
+                                        style="background-image: url(../uploads/rooms/{{this.image.[0]}});">
+                                        {{!-- <img src="/uploads/rooms/{{this.image.[0]}}" class="img-fluid" alt="Image"
+                                            style="height: 100%;max-width: fit-content;"> --}}
+                                    </div>
+                                </a>
+                                <div class="room-services">
+                                    {{!-- <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover"
+                                        data-placement="right" data-trigger="hover" data-content="Breakfast Included"
+                                        data-original-title="Breakfast"></i>
+                                    <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover"
+                                        data-placement="right" data-trigger="hover" data-content="Free WiFi"
+                                        data-original-title="WiFi"></i>
+                                    <i class="fa fa-television" data-toggle="popover" data-placement="right"
+                                        data-trigger="hover" data-content="Plasma TV with cable channels"
+                                        data-original-title="TV"></i>--}}
+                                    {{!-- <a href="/add-to-wishlist/{{this._id}}"><i class="fa fa-heart"></i></a> --}}
+                                    {{#if ../username}}
+                                    {{#if this.wishlist}}
+                                    <button class="border-0 rounded ">
+                                        <a href="/remove-wishlist/{{this._id}}"> <i class="fa fa-heart bg-transparent" style="color: red;"></i></a>
+                                    </button>
+                                    {{else}}
+                                    <button class="border-0 rounded ">
+                                        {{!-- <a class="border-0 rounded "><i class=" fa fa-heart bg-transparent"></i></a> --}}
+                                        <a href="/add-to-wishlist/{{this._id}}" class="border-0 rounded "><i class="fa fa-heart bg-transparent"></i></a>
+                                    </button>
+                                    {{/if}}
+                                    {{else}}
+                                    <a href="/login"><button class="border-0 rounded ">
+                                            <i class="fa fa-heart bg-transparent wishlisted-icon"></i></button></a>
+                                    {{/if}}
+
+                                </div>
+                                <div class="room-price"><del>₹{{this.mrpprice}}</del> &nbsp;₹{{this.salesprice}}</div>
+                            </figure>
+                            <div class="room-info">
+                                <h2 class="room-title">
+                                    <a href="/room/{{this._id}}" class="text-heading">{{this.type}} Room</a>
+                                </h2>
+                                {{!-- <h6>Type : <strong>{{this.type}}</strong></h6> --}}
+                                <p class="text-description">{{this.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{!-- <div class="load-more">
+            LOAD MORE ROOMS
+        </div> --}}
+    </div>
+</main>
