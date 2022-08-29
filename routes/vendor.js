@@ -244,20 +244,16 @@ router.get('/hotels/edit-hotel/:id',varifyvendorLogin, async (req, res) => {
 
 router.post('/hotels/edit-hotel/:id', upload.array('images'), async (req, res) => {
   try {
-    if (!req.file) {
+    if (!req.files) {
       let editHotel = await vendorHelpers.getHotelData(req.params.id);
       req.body.image = editHotel.image;
-      // const obj = Object.assign([{}], req.body.facility);
-      // req.body.facility = obj
-      // req.body.facility = [req.body.facility] 
       vendorHelpers.updateHotel(req.params.id, req.body).then(() => {
         res.redirect('/vendor/hotels')
       }).catch(error => {
         res.render('vendor/400')
       })
     } else {
-      // const obj = Object.assign([{}], req.body.facility);
-      // req.body.facility = obj
+
       var filenames = req.files.map(function (file) {
         return file.filename;
       });

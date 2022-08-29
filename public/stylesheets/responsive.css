@@ -53,8 +53,12 @@ Version:       1.1.0
         background-color: rgba(0, 0, 0, 0.299);
         width: 100vw;
           height: 100vh;
+          z-index: 99;
 }
 
+.t-check-out .t-datepicker-day {
+  left: -80%;
+}
 .t-date-info-title {
   display: contents !important;
 }
