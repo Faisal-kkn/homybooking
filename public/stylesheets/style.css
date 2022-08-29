@@ -7634,3 +7634,10 @@ section.places-item {
 #preview img{
   margin-right: 10px;
 }
+.modal-backdrop .show {
+  z-index: auto;
+}
+
+.modal-open .modal {
+  margin-top: 100px;
+}

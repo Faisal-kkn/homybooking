@@ -26,34 +26,31 @@
 </style>
 {{#if dates}}
 {{else}}
-<div class="container">
-    <div class="row">
-
-        <div id="myModal" class="modal hide fade in" data-keyboard="false" data-backdrop="static">
-
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-
-                    <div class="modal-body text-center">
-                        <form class="booking-form" action="/availability" method="POST">
-                            <div class="t-datepicker form-group text-dark">
-                                <div class="t-check-in bg-dark text-dark" id="check-in"></div>
-                                <div class="t-check-out bg-dark text-dark"></div>
-                                <span id="dateErr"></span>
-                            </div>
-
-                            <button type="submit" class="btn w-100" onclick="myFunction(event)">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                                Search
-                            </button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <!--         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+<div class="model-bg">
+    <div class="container ">
+        <div class="row">
+            <div id="myModal" class="modal hide fade in w-100" data-keyboard="false" data-backdrop="static">
+            
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+            
+                        <div class="modal-body text-center">
+                            <form class="booking-form" action="/availability" method="POST">
+                                <div class="t-datepicker form-group text-dark">
+                                    <div class="t-check-in bg-dark text-dark" id="check-in"></div>
+                                    <div class="t-check-out bg-dark text-dark"></div>
+                                    <span id="dateErr"></span>
+                                </div>
+            
+                                <button type="submit" class="btn w-100" onclick="myFunction(event)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    Search
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
