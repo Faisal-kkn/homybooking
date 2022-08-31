@@ -138,7 +138,7 @@ module.exports = {
 
     },
     updateHotel: (editHotel, hotelData) => {
-
+        console.log(hotelData);
         return new Promise(async (resolve, reject) => {
 
             db.get().collection(collection.HOTEL_COLLECTION).updateOne({ _id: objectId(editHotel) }, {
@@ -268,6 +268,8 @@ module.exports = {
 
         return new Promise((resolve, reject) => {
             db.get().collection(collection.ROOMS_COLLECTION).findOne({ _id: objectId(editRoom) }).then((roomData) => {
+                console.log('roomData');
+                console.log(roomData);
                 resolve(roomData)
             })
         })
@@ -275,20 +277,26 @@ module.exports = {
 
     },
     updateRoom: (editRoom, roomData) => {
-
+        console.log('roomDataaaaaaaaaaaas');
+        console.log(roomData.images);
         return new Promise(async (resolve, reject) => {
 
             db.get().collection(collection.ROOMS_COLLECTION).updateOne({ _id: objectId(editRoom) }, {
                 $set: {
-                    room_no: roomData.room_no,
+                    room_count: roomData.room_count,
                     type: roomData.type,
                     roomstatus: roomData.roomstatus,
                     mrpprice: roomData.mrpprice,
                     salesprice: roomData.salesprice,
-                    images: roomData.images,
+                    image: roomData.images,
                     description: roomData.description
                 }
             }).then((response) => {
+                db.get().collection(collection.ROOMS_COLLECTION).findOne({ _id: objectId(editRoom) }).then((response) => {
+
+                    console.log('responseeeeeeeeeeeeeeeee');
+                    console.log(response);
+                })
                 resolve()
             })
 
@@ -297,21 +305,7 @@ module.exports = {
 
 
     },
-    // deleteRoom: (roomId,hotelId) => {
-    //     
-    //         return new Promise((resolve, reject) => {
-    //             db.get().collection(collection.ROOMS_COLLECTION).deleteOne({ _id: objectId(roomId) }).then(async (response) => {
-    //                 // let hotelRooms =await db.get().collection(collection.HOTEL_COLLECTION).findOne({_id:objectId(hotelId)})
-    //                 // let roomsIds = hotelRooms.indexOf({rooms:[ObjectID(roomId)]})
-    //                 // console.log(roomsIds);
-    //                 resolve(response)
-    //             })
-    //         })
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
 
-    // },
     getAllBookings: (vendorId) => {
 
         return new Promise(async (resolve, reject) => {

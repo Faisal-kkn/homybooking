@@ -16,7 +16,7 @@ const varifySuperAdminLogin = (req, res, next) => {
 }
 
 /* home section */
-router.get('/',varifySuperAdminLogin, (req, res, next)=> {
+router.get('/', varifySuperAdminLogin, (req, res, next) => {
   try {
     res.redirect('/super_admin/dashboard')
   } catch (error) {
@@ -25,13 +25,9 @@ router.get('/',varifySuperAdminLogin, (req, res, next)=> {
 });
 
 /* Login section */
-router.post('/superadmin_login', (req, res) =>{
+router.post('/superadmin_login', (req, res) => {
   try {
-
-  } catch (error) {
-    res.render('superAdmin/400')
-  }
-  superAdminHelpers.doSuperAdminLogin(req.body).then((response) => {
+    superAdminHelpers.doSuperAdminLogin(req.body).then((response) => {
       if (response.status) {
         req.session.superAdminLogin = true;
         req.session.superAdmin = response.superAdmin;
@@ -40,9 +36,12 @@ router.post('/superadmin_login', (req, res) =>{
         req.session.superAdminLoginErr = "incorrect username or password ";
         res.redirect('/super_admin');
       }
-  }).catch(error => {
+    }).catch(error => {
+      res.render('superAdmin/400')
+    })
+  } catch (error) {
     res.render('superAdmin/400')
-  })
+  }
 });
 
 /* dashboard section */
@@ -68,7 +67,7 @@ router.get('/dashboard', varifySuperAdminLogin, (req, res) => {
 });
 
 /* Vendors section */
-router.get('/vendors',varifySuperAdminLogin, (req, res)=> {
+router.get('/vendors', varifySuperAdminLogin, (req, res) => {
   try {
     superAdminHelpers.vendorRequests().then((vendors) => {
       res.render('superAdmin/vendors', { adminPage, superAdmin: true, user: false, table: true, vendors });
@@ -149,7 +148,7 @@ router.get('/vendor/hotels/bookings/:id', varifySuperAdminLogin, (req, res) => {
 })
 
 /* Hotel section */
-router.get('/hotels',varifySuperAdminLogin, (req, res)=> {
+router.get('/hotels', varifySuperAdminLogin, (req, res) => {
   try {
     superAdminHelpers.getAllHotels().then((hotels) => {
       res.render('superAdmin/hotels', { adminPage, superAdmin: true, user: false, table: true, hotels });
@@ -189,7 +188,7 @@ router.get('/hotels/unblock/:id', varifySuperAdminLogin, (req, res) => {
 })
 
 /* user section */
-router.get('/users', varifySuperAdminLogin, (req, res, next)=> {
+router.get('/users', varifySuperAdminLogin, (req, res, next) => {
   try {
     superAdminHelpers.getUsers().then((usersData) => {
       res.render('superAdmin/view-users', { usersData, adminPage, superAdmin: true, table: true })
@@ -270,7 +269,7 @@ router.get('/hotel/hotel_facility', varifySuperAdminLogin, async (req, res) => {
 
 })
 
-router.post('/hotel/add_hotel_facility', (req,res)=>{
+router.post('/hotel/add_hotel_facility', (req, res) => {
   try {
     superAdminHelpers.addHotelFacility(req.body).then((response) => {
       res.redirect('/super_admin/hotel/hotel_facility');
@@ -297,7 +296,7 @@ router.get('/room/room_type', varifySuperAdminLogin, async (req, res) => {
 
 })
 
-router.post('/hotel/add_room_type', (req,res)=>{
+router.post('/hotel/add_room_type', (req, res) => {
   try {
     superAdminHelpers.addRoomTypes(req.body).then((response) => {
       res.redirect('/super_admin/room/room_type');
@@ -324,7 +323,7 @@ router.get('/room/room_status', varifySuperAdminLogin, async (req, res) => {
 
 })
 
-router.post('/room/add_room_status', (req,res)=>{
+router.post('/room/add_room_status', (req, res) => {
   try {
     superAdminHelpers.addRoomStatus(req.body).then((response) => {
       res.redirect('/super_admin/room/room_status');
@@ -485,10 +484,10 @@ let fileStorage = multer.diskStorage({
     cb(null, `${Date.now()}--${file.originalname}`)
   }
 })
- 
+
 let upload = multer({ storage: fileStorage })
 
-router.post('/banner', upload.single('slider'), (req, res, next)=> {
+router.post('/banner', upload.single('slider'), (req, res, next) => {
   try {
     if (!req.file) {
       req.session.imageErr = 'Please choose file'
@@ -525,7 +524,7 @@ router.post('/add-coupon', async (req, res) => {
   try {
     superAdminHelpers.addCoupon(req.body).then((response) => {
       if (response.status) {
-        res.redirect('super_admin/add-coupon')
+        res.redirect('/super_admin/add-coupon')
       } else {
         req.session.couponErr = 'This Coupon is already Used';
         res.redirect('/super_admin/add-coupon')

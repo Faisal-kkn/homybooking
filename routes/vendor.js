@@ -390,6 +390,7 @@ router.post('/hotels/edit-room/:id', upload2.array('images'), async (req, res) =
       });
       req.body.images = filenames;
     }
+    console.log(req.body.images);
     vendorHelpers.updateRoom(req.params.id, req.body).then(() => {
       res.redirect('/vendor/hotels')
     }).catch(error => {

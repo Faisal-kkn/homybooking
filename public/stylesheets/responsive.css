@@ -10,58 +10,61 @@ Version:       1.1.0
 @media only screen and (max-width: 567px) {
   .left_box h5 {
     padding-left: 10px;
-      /* padding-top: 70px; */
+    /* padding-top: 70px; */
       font-size: 30px;
       /* font-weight: bold; */
     }
 
     .left_box p {
       padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 40px;
-        /* padding-top: 90px; */
-        font-size: 13px;
-        /* text-align: justify; */
+      padding-right: 10px;
+      padding-bottom: 40px;
+      /* padding-top: 90px; */
+      font-size: 13px;
+      /* text-align: justify; */
     }
 
     .main {
       padding-top: 30px;
-        padding-bottom: 0px;
+      padding-bottom: 0px;
     }
-.body-login {
-  height: 100vh;
-}
-.left_box p {
-  padding-top: 0;
-}
 
-.modal-backdrop.show {
-  opacity: 0;
-  z-index: -1;
-}
+    .body-login {
+      height: 100vh;
+    }
 
-.model-bg {
-  position: relative;
-  width: 100%;
-}
+    .left_box p {
+      padding-top: 0;
+    }
 
-.model-bg::before {
+    .modal-backdrop.show {
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .model-bg {
+      position: relative;
+      width: 100%;
+    }
+
+    .model-bg::before {
       position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.299);
-        width: 100vw;
-          height: 100vh;
-          z-index: 99;
-}
+      content: '';
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.299);
+      width: 100vw;
+      height: 100vh;
+      z-index: 99;
+    }
 
-.t-check-out .t-datepicker-day {
-  left: -80%;
-}
-.t-date-info-title {
-  display: contents !important;
-}
+    .t-check-out .t-datepicker-day {
+      left: -80%;
+    }
+
+    .t-date-info-title {
+      display: contents !important;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -70,16 +73,16 @@ Version:       1.1.0
 
   .left_box h5 {
     padding-left: 20px;
-      /* padding-top: 80px; */
+    /* padding-top: 80px; */
       font-size: 30px;
     }
 
     .left_box p {
       padding-left: 20px;
-        padding-right: 20px;
-        /* padding-top: 150px; */
-        font-size: 13px;
-        /* text-align: justify; */
+      padding-right: 20px;
+      /* padding-top: 150px; */
+      font-size: 13px;
+      /* text-align: justify; */
     }
 }
 
@@ -217,29 +220,32 @@ Version:       1.1.0
   .section-title p {
     font-size: 13px;
   }
-section.wave-white:before,
-section.wave-white:after,
-section.wave-blue:before,
-section.wave-blue:after {
+
+    section.wave-white:before,
+    section.wave-white:after,
+    section.wave-blue:before,
+    section.wave-blue:after {
     display: none;
   }
-section .room-grid-item,
-section .news-grid-item,
-section .newsv2-item,
-section .staff-item,
-section .offer-item,
-section .event-item,
-section .shop-item {
+
+    section .room-grid-item,
+    section .news-grid-item,
+    section .newsv2-item,
+    section .staff-item,
+    section .offer-item,
+    section .event-item,
+    section .shop-item {
     margin-bottom: 30px;
   }
 
   .rooms.rooms-over-slider {
     margin-top: 80px;
   }
-section.testimonials .testimonials-owl .owl-dots,
-section .section-title .view-all,
-section .info-branding .providers span,
-section .owl-carousel .owl-nav {
+
+    section.testimonials .testimonials-owl .owl-dots,
+    section .section-title .view-all,
+    section .info-branding .providers span,
+    section .owl-carousel .owl-nav {
     display: none;
   }
 
@@ -274,8 +280,9 @@ section .owl-carousel .owl-nav {
     left: 50%;
     transform: translate(-50%);
   }
-section.restaurant .restaurant-menu-item .title,
-section.restaurant .restaurant-menu-item .title span.price {
+
+    section.restaurant .restaurant-menu-item .title,
+    section.restaurant .restaurant-menu-item .title span.price {
     font-size: 12px;
   }
 
@@ -318,12 +325,14 @@ section.restaurant .restaurant-menu-item .title span.price {
   .services-v2 .main-image {
     margin-bottom: 50px;
   }
-.news-grid-item .news-info,
-.newsv2-item .news-info {
+
+    .news-grid-item .news-info,
+    .newsv2-item .news-info {
     padding: 15px;
   }
-.news-grid-item .news-info h4 a,
-.newsv2-item .news-info h4 a {
+
+    .news-grid-item .news-info h4 a,
+    .newsv2-item .news-info h4 a {
     font-size: 16px;
   }
 
@@ -359,8 +368,9 @@ section.restaurant .restaurant-menu-item .title span.price {
   .page-title .inner {
     padding: 20px 0;
   }
-.page-title .breadcrumb li,
-.page-title .breadcrumb a {
+
+    .page-title .breadcrumb li,
+    .page-title .breadcrumb a {
     font-size: 10px;
   }
 
@@ -478,8 +488,9 @@ section.restaurant .restaurant-menu-item .title span.price {
   footer .footer-widgets .footer-widget .inner .tripadvisor-banner {
     text-align: left;
   }
-footer .subfooter .copyrights,
-footer .subfooter .social-media {
+
+    footer .subfooter .copyrights,
+    footer .subfooter .social-media {
     float: none;
     display: block;
     text-align: center;

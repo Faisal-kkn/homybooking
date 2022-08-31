@@ -214,11 +214,11 @@ router.post('/availability', (req, res) => {
     }
 
 })
-router.get('/rooms', (req, res) => {
+router.get('/rooms', async (req, res) => {
     try {
         userHelpers.getAllRooms(req.session.user).then(async (userwishlist) => {
             if (req.session.user) {
-                if (availaberoom) {
+                if (availaberoom && userwishlist) {
                     for (var i = 0; i < availaberoom.length; i++) {
                         availaberoom[i].wishlist = false
                     }
@@ -233,15 +233,16 @@ router.get('/rooms', (req, res) => {
                     }
                 }
             }
-            // console.log('availaberoom');
-            // console.log(availaberoom);
-            let rooms = await availaberoom
+            console.log('availaberoom');
+            console.log(availaberoom);
+            let rooms = availaberoom
             let roomTypes = await userHelpers.getAllTypes()
             req.session.returnTo = req.originalUrl
             res.render('user/rooms', { user: true, rooms, roomTypes, username: req.session.user, dates: req.session.dates })
         }).catch(error => {
             res.render('user/400', { user: true, username: req.session.user })
         })
+
     } catch (error) {
         res.render('user/400')
     }
@@ -674,6 +675,7 @@ router.get('/logout', (req, res) => {
     try {
         req.session.user = null;
         req.session.loggedIn = null;
+        req.session.dates = null;
         res.redirect('/')
     } catch (error) {
         res.render('user/400')
