@@ -142,11 +142,13 @@
                                     </td>
                                     <td>
                                         {{#if this.checkIn_Status}}
-                                        <a href="/vendor/room/checkIn/{{this._id}}" class="btn btn-outline-success waves-effect waves-light">
-                                            <i class="fas fa-door-closed mr-2"></i>CheckIn
-                                        </a>
+                                            {{#if_eq this.bookingStatus "success"}}
+                                            <a href="/vendor/room/checkIn/{{this._id}}" class="btn btn-outline-success waves-effect waves-light">
+                                                <i class="fas fa-door-closed mr-2"></i>CheckIn
+                                            </a>
+                                            {{/if_eq}}
                                         {{else}}
-                                        {{#if_eq this.paymentStatus "success"}}
+                                        {{#if_eq this.bookingStatus "success"}}
                                         {{#if_eq this.CheckOutStatus 'CheckOuted'}}
                                         <span class="text-success">CheckOuted</span>
                                         {{else}}

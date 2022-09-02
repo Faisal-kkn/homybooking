@@ -345,14 +345,10 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             let roomData = await db.get().collection(collection.ROOMS_COLLECTION).findOne({ _id: objectId(roomId) })
 
-            // if (bookingDetails.wallet == 'true') {
-            //   bookingDetails.totalAmount = (allDates.length * roomData.salesprice) - userData.wallet
-            // }
             let totalAmount = parseInt((bookingDetails.totalAmount * 30) / 100)
             let balanceAmount = bookingDetails.totalAmount - totalAmount
             console.log('balanceAmount');
             console.log(balanceAmount);
-            // Math.abs(totalAmount)
 
             let checkOutDates = allDates[allDates.length - 1];
             let bookedDetails = {
@@ -420,10 +416,10 @@ module.exports = {
                         }
                     }
 
+                    let bookingDetail = { insertedId: data.insertedId, totalAmount: bookedDetails.totalAmount }
+                    console.log(bookedDetails);
+                    resolve(bookingDetail)
                 })
-                let bookingDetail = { insertedId: data.insertedId, totalAmount: bookedDetails.totalAmount }
-                console.log(bookedDetails);
-                resolve(bookingDetail)
             })
         })
 
@@ -451,6 +447,7 @@ module.exports = {
                     paymentMethod: "Wallet"
                 }
             }).then(() => {
+
                 resolve()
             })
         })
@@ -667,124 +664,6 @@ module.exports = {
 
 
     },
-    // getAvailability: (dates) => {
-    //     return new Promise(async (resolve, response) => {
-
-    //         let booking = await db.get().collection(collection.BOOKING_COLLECTION).find({ $and: [{ Date: { $gte: new Date(dates['t-start']), $lt: new Date(dates['t-end']) } }], $or: [{ bookingStatus: "success" }, { bookingStatus: "pending" }] }).toArray()
-
-    //         var bookingId = booking.map(function (room) {
-    //             return room.room._id
-    //         });
-
-    //         var bookingIdssss = booking.map(function (room) {
-    //             return { roomId: room.room._id, checkInDate: room.Date[0], checkOutDate: room.checkOutDate }
-    //         });
-    //         console.log('bookingIdssss first');
-    //         console.log(bookingIdssss);
-
-    //         for (var i = 0; i < bookingIdssss.length; i++) {
-    //             for (var j = i; j < bookingIdssss.length; j++) {
-    //                 if (bookingIdssss[i].checkOutDate == bookingIdssss[j].checkOutDate && bookingIdssss[i].roomId == bookingIdssss[j].roomId) {
-    //                     bookingIdssss.splice(i, 1);
-    //                 }
-    //             }
-    //         }
-
-
-    //         console.log('bookingIdssss');
-    //         console.log(bookingIdssss);
-    //         let counttt = 0;
-    //         for (var i = 0; i < bookingIdssss.length; i++) {
-    //             for (var j = i; j < bookingIdssss.length; j++) {
-    //                 if (bookingIdssss[j].checkInDate.toString() > bookingIdssss[i].checkOutDate.toString() && bookingIdssss[j].roomId == bookingIdssss[i].roomId) {
-    //                     console.log('bookingIdssss[j].checkInDate');
-    //                     console.log(bookingIdssss[j].checkInDate.toString());
-    //                     console.log(bookingIdssss[i].checkOutDate.toString());
-    //                     console.log('asa');
-    //                     counttt++;
-    //                     break
-    //                 }
-    //             }
-    //         }
-    //         console.log(counttt);
-    //         console.log('bookingId');
-    //         console.log(bookingId);
-
-    //         let bookedId = await db.get().collection(collection.ROOMS_COLLECTION).find({
-    //             _id: {
-    //                 $in: bookingId
-    //             }
-    //         }).toArray()
-    //         console.log('bookedId');
-    //         console.log(bookedId);
-
-    //         var ids = bookedId.map(function (id) {
-    //             let iddd = { id: id._id.toString(), count: id.room_count }
-    //             return iddd
-    //         });
-    //         console.log('ids');
-    //         console.log(ids);
-
-
-    //         ids.sort()
-
-    //         var counts = ids.map(function (count) {
-    //             return count.count
-    //         });
-    //         console.log('counts');
-    //         console.log(counts);
-
-
-    //         let count = {};
-    //         bookingId.forEach(element => {
-    //             count[element] = (count[element] || 0) + 1;
-    //         });
-
-    //         console.log('count');
-    //         console.log(count);
-
-    //         const propertyValues = Object.values(count);
-    //         console.log('propertyValues');
-    //         console.log(propertyValues);
-
-    //         var bookingIdss = booking.map(function (room) {
-    //             return room.room._id.toString()
-    //         });
-
-    //         console.log('bookingIdss');
-    //         console.log(bookingIdss);
-
-    //         let uniqueChars = [...new Set(bookingIdss)];
-    //         console.log('uniqueChars');
-    //         console.log(uniqueChars);
-
-    //         var book = uniqueChars.map(function (id) {
-    //             return objectId(id)
-    //         });
-    //         console.log('book');
-    //         console.log(book);
-
-    //         bookingId.sort()
-    //         for (let i = 0; i < propertyValues.length; i++) {
-    //             if (propertyValues[i] < counts[i]) {
-    //                 book.splice(i, 1);
-    //             }
-    //         }
-
-    //         db.get().collection(collection.ROOMS_COLLECTION).find({
-    //             _id: {
-    //                 $nin: book
-    //             },
-    //             roomstatus: "available",
-    //             hotelStatus: true
-
-    //         }).toArray().then((response) => {
-    //             resolve(response)
-    //         })
-    //     })
-
-
-    // },
     verifyPayment: (details) => {
         return new Promise((resolve, reject) => {
             const crypto = require('crypto');
@@ -936,8 +815,7 @@ module.exports = {
     },
     walletHistory: (userId) => {
         return new Promise(async (resolve, reject) => {
-            // db.get().collection(collection.WALLET_COLLECTION).findOne({ user: userId }).then((response) => {
-            // })
+
             db.get().collection(collection.WALLET_COLLECTION).aggregate([
                 {
                     $match: {
@@ -958,7 +836,14 @@ module.exports = {
                 {
                     $unwind: "$bookings"
                 },
+                {
+                    $match: {
+                        $or: [{ "bookings.paymentStatus": "success" }, { "bookings.paymentStatus": "success", "bookings.bookingStatus": "cancelled" }]
+                    }
+                },
             ]).toArray().then((response) => {
+                console.log('responseeeeeeeeee');
+                console.log(response);
                 resolve(response)
             })
         })

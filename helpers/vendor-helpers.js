@@ -865,6 +865,8 @@ module.exports = {
                         }
                     }
                 ]).toArray()
+                console.log('totalAmount.razorpay');
+                console.log(totalAmount.razorpay);
 
                 totalAmount.Wallet = await db.get().collection(collection.BOOKING_COLLECTION).aggregate([
                     {
@@ -977,8 +979,9 @@ module.exports = {
                     $unwind: "$rooms"
                 },
 
-
             ]).toArray().then(async (response) => {
+                console.log('errrrrrrrrrrrrrrrrresponse');
+                console.log(response);
                 let rooms = response.map(function (rooms) {
                     return rooms.rooms
                 });
@@ -990,23 +993,23 @@ module.exports = {
                             "room._id": { $in: rooms }
                         }
                     },
-                    {
-                        $match: {
-                            paymentMethod: "razorpay",
-                            paymentStatus: "success",
-                            bookingStatus: "success",
-                            Withdraw: false,
-                            CheckOutStatus: "CheckOuted"
-                        }
-                    },
-                    {
-                        $group: {
-                            _id: null,
-                            total: {
-                                $sum: "$totalAmount"
-                            }
-                        }
-                    }
+                    // {
+                    //     $match: {
+                    //         paymentMethod: "razorpay",
+                    //         paymentStatus: "success",
+                    //         bookingStatus: "success",
+                    //         Withdraw: false,
+                    //         CheckOutStatus: "CheckOuted"
+                    //     }
+                    // },
+                    // {
+                    //     $group: {
+                    //         _id: null,
+                    //         total: {
+                    //             $sum: "$totalAmount"
+                    //         }
+                    //     }
+                    // }
                 ]).toArray()
                 console.log('totalAmount.razorpay');
                 console.log(totalAmount.razorpay);
@@ -1023,7 +1026,7 @@ module.exports = {
                             paymentStatus: "success",
                             bookingStatus: "success",
                             Withdraw: true,
-                            CheckOutStatus: "Checkouted"
+                            CheckOutStatus: "CheckOuted"
                         }
                     },
                     {

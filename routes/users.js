@@ -92,6 +92,31 @@ router.post('/login', (req, res) => {
     }
 
 })
+
+router.get('/resent', (req, res) => {
+    try {
+        userHelpers.doLogin(loginOtp).then((response) => {
+            if (response.err) {
+                req.session.loginerr = response.err
+                res.redirect('/login')
+            } else {
+                if (response.status) {
+                    loginOtp = response.user
+                    res.redirect('/loginotp')
+                } else {
+                    req.session.loginerr = "incorrect username or password ";
+                    res.redirect('/login')
+                }
+            }
+        }).catch(error => {
+            res.render('user/400')
+        })
+    } catch (error) {
+        res.render('user/400')
+    }
+
+})
+
 router.get('/loginotp', (req, res) => {
     try {
         if (req.session.loggedIn) {
@@ -371,7 +396,7 @@ router.post('/room/booked', (req, res) => {
 
             if (req.body.wallet == 'true') {
                 req.session.walletStatus = true;
-                req.session.walletAmount = wallet.wallet
+                req.session.walletAmount = wallet.wallet;
                 var grater = false;
                 if (wallet.wallet > bookingDetail.totalAmount) {
                     grater = true

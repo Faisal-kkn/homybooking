@@ -84,6 +84,7 @@ $("#booking_form").submit((e) => {
             if (response.razorpay == true) {
                 razorpayPayment(response)
             } else if (response.wallet) {
+                console.log('sadas');
                 location.href = '/order-success'
             } else if (response.payer.payment_method == 'paypal') {
                  alert('response')

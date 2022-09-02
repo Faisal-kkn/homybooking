@@ -69,8 +69,9 @@ router.get('/dashboard', varifySuperAdminLogin, (req, res) => {
 /* Vendors section */
 router.get('/vendors', varifySuperAdminLogin, (req, res) => {
   try {
-    superAdminHelpers.vendorRequests().then((vendors) => {
-      res.render('superAdmin/vendors', { adminPage, superAdmin: true, user: false, table: true, vendors });
+    superAdminHelpers.vendorRequests().then(async (vendors) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/vendors', { adminPage, superAdmin: true, user: false, table: true, vendors, wallet });
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -122,8 +123,9 @@ router.get('/vendor/unblock/:id', varifySuperAdminLogin, (req, res) => {
 
 router.get('/vendor/hotel/:id', varifySuperAdminLogin, (req, res) => {
   try {
-    superAdminHelpers.vendorSingleHotel(req.params.id).then((hotels) => {
-      res.render('superAdmin/vendor-hotel', { adminPage, superAdmin: true, user: false, table: true, hotels });
+    superAdminHelpers.vendorSingleHotel(req.params.id).then(async (hotels) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/vendor-hotel', { adminPage, superAdmin: true, user: false, table: true, hotels, wallet });
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -136,8 +138,9 @@ router.get('/vendor/hotel/:id', varifySuperAdminLogin, (req, res) => {
 
 router.get('/vendor/hotels/bookings/:id', varifySuperAdminLogin, (req, res) => {
   try {
-    superAdminHelpers.getSingleHotelBookings(req.params.id).then((bookdrooms) => {
-      res.render('superAdmin/single-hotel-bookings', { bookdrooms, adminPage, vendorHeader: true, vendor: req.session.vendor, table: true })
+    superAdminHelpers.getSingleHotelBookings(req.params.id).then(async (bookdrooms) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/single-hotel-bookings', { bookdrooms, adminPage, vendorHeader: true, vendor: req.session.vendor, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -150,8 +153,9 @@ router.get('/vendor/hotels/bookings/:id', varifySuperAdminLogin, (req, res) => {
 /* Hotel section */
 router.get('/hotels', varifySuperAdminLogin, (req, res) => {
   try {
-    superAdminHelpers.getAllHotels().then((hotels) => {
-      res.render('superAdmin/hotels', { adminPage, superAdmin: true, user: false, table: true, hotels });
+    superAdminHelpers.getAllHotels().then(async (hotels) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/hotels', { adminPage, superAdmin: true, user: false, table: true, hotels, wallet });
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -190,8 +194,9 @@ router.get('/hotels/unblock/:id', varifySuperAdminLogin, (req, res) => {
 /* user section */
 router.get('/users', varifySuperAdminLogin, (req, res, next) => {
   try {
-    superAdminHelpers.getUsers().then((usersData) => {
-      res.render('superAdmin/view-users', { usersData, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.getUsers().then(async (usersData) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/view-users', { usersData, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -232,8 +237,9 @@ router.get('/user/unblock/:id', varifySuperAdminLogin, (req, res) => {
 /* Hotel Category section */
 router.get('/hotel/hotel_type', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.hotelType().then((hotelTypes) => {
-      res.render('superAdmin/hoteltype', { hotelTypes, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.hotelType().then(async (hotelTypes) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/hoteltype', { hotelTypes, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -258,8 +264,9 @@ router.post('/hotel/add_hotel_type', (req, res) => {
 
 router.get('/hotel/hotel_facility', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.hotelFacility().then((hotelFacility) => {
-      res.render('superAdmin/hotelfacility', { hotelFacility, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.hotelFacility().then(async (hotelFacility) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/hotelfacility', { hotelFacility, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -285,8 +292,9 @@ router.post('/hotel/add_hotel_facility', (req, res) => {
 /* Room Category section */
 router.get('/room/room_type', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.roomTypes().then((roomTypes) => {
-      res.render('superAdmin/roomtype', { roomTypes, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.roomTypes().then(async (roomTypes) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/roomtype', { roomTypes, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -311,8 +319,9 @@ router.post('/hotel/add_room_type', (req, res) => {
 
 router.get('/room/room_status', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.roomStatus().then((roomStatus) => {
-      res.render('superAdmin/roomstatus', { roomStatus, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.roomStatus().then(async (roomStatus) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/roomstatus', { roomStatus, adminPage, superAdmin: true, table: true, wallet })
 
     }).catch(error => {
       res.render('superAdmin/400')
@@ -354,8 +363,9 @@ router.post('/room/add_room_status', (req, res) => {
 /* Booking section */
 router.get('/bookings', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.bookings().then((allBookings) => {
-      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.bookings().then(async (allBookings) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -367,8 +377,9 @@ router.get('/bookings', varifySuperAdminLogin, async (req, res) => {
 
 router.get('/bookings/last-day', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.todayBookings().then((allBookings) => {
-      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.todayBookings().then(async (allBookings) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -380,8 +391,9 @@ router.get('/bookings/last-day', varifySuperAdminLogin, async (req, res) => {
 
 router.get('/bookings/week', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.lastWeekBookings().then((allBookings) => {
-      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.lastWeekBookings().then(async (allBookings) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -393,8 +405,9 @@ router.get('/bookings/week', varifySuperAdminLogin, async (req, res) => {
 
 router.get('/bookings/month', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.lastMonthBookings().then((allBookings) => {
-      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true })
+    superAdminHelpers.lastMonthBookings().then(async (allBookings) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -422,7 +435,8 @@ router.post('/bookings/custom', varifySuperAdminLogin, async (req, res) => {
 router.get('/bookings/custom', varifySuperAdminLogin, async (req, res) => {
   try {
     allBookings = req.session.customDate
-    res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true })
+    var wallet = superAdminHelpers.checkWallet()
+    res.render('superAdmin/all-bookings', { allBookings, adminPage, superAdmin: true, table: true, wallet })
   } catch (error) {
     res.render('superAdmin/400')
   }
@@ -446,8 +460,9 @@ router.get('/booking/cancel/:id', varifySuperAdminLogin, async (req, res) => {
 /* Banner section */
 router.get('/banner', varifySuperAdminLogin, (req, res) => {
   try {
-    superAdminHelpers.getSlider().then((banner) => {
-      res.render('superAdmin/banner', { banner, adminPage, superAdmin: true, table: true, imageErr: req.session.imageErr, bannerErr: req.session.bannerErr })
+    superAdminHelpers.getSlider().then(async (banner) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/banner', { banner, adminPage, superAdmin: true, table: true, imageErr: req.session.imageErr, bannerErr: req.session.bannerErr, wallet })
       req.session.imageErr = null;
       req.session.bannerErr = null;
     }).catch(error => {
@@ -539,8 +554,9 @@ router.post('/add-coupon', async (req, res) => {
 
 router.get('/view-coupon', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.getCoupon().then((coupon) => {
-      res.render('superAdmin/view-coupon', { adminPage, superAdmin: true, table: true, coupon })
+    superAdminHelpers.getCoupon().then(async (coupon) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/view-coupon', { adminPage, superAdmin: true, table: true, coupon, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -552,8 +568,9 @@ router.get('/view-coupon', varifySuperAdminLogin, async (req, res) => {
 
 router.get('/coupon-used/:id', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.getCouponUsed(req.params.id).then((users) => {
-      res.render('superAdmin/coupon-used-users', { adminPage, superAdmin: true, table: true, users })
+    superAdminHelpers.getCouponUsed(req.params.id).then(async (users) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/coupon-used-users', { adminPage, superAdmin: true, table: true, users, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -567,8 +584,9 @@ router.get('/coupon-used/:id', varifySuperAdminLogin, async (req, res) => {
 
 router.get('/transactions', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.transactions().then((transaction) => {
-      res.render('superAdmin/transaction', { adminPage, superAdmin: true, table: true, transaction })
+    superAdminHelpers.transactions().then(async (transaction) => {
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/transaction', { adminPage, superAdmin: true, table: true, transaction, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
@@ -580,12 +598,12 @@ router.get('/transactions', varifySuperAdminLogin, async (req, res) => {
 
 router.get('/transactions/:id', varifySuperAdminLogin, async (req, res) => {
   try {
-    superAdminHelpers.transactionsSingle(req.params.id).then((transaction) => {
+    superAdminHelpers.transactionsSingle(req.params.id).then(async (transaction) => {
       console.log('single-transaction');
       console.log(transaction);
       req.session.superAdminReturnTo = req.originalUrl
-
-      res.render('superAdmin/single-transaction', { adminPage, superAdmin: true, table: true, transaction })
+      var wallet = await superAdminHelpers.checkWallet()
+      res.render('superAdmin/single-transaction', { adminPage, superAdmin: true, table: true, transaction, wallet })
     }).catch(error => {
       res.render('superAdmin/400')
     })
