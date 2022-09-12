@@ -37,13 +37,13 @@ module.exports = {
                     response.status = false
                     resolve(response)
                 } else {
-                    //   client.verify.services(process.env.SERVICEID).verifications.create({
-                    //   to: `+91${userData.mobile}`,
-                    //   channel: 'sms',
-                    // })
-                    // .then((data) => {
-                    //   res.status(200).send(data)
-                    // })
+                    client.verify.services(process.env.SERVICEID).verifications.create({
+                        to: `+91${userData.mobile}`,
+                        channel: 'sms',
+                    })
+                        .then((data) => {
+                            res.status(200).send(data)
+                        })
                     response.user = user
                     response.status = true
                     resolve(response)
@@ -59,21 +59,21 @@ module.exports = {
         console.log(userDetails.mobile);
         return new Promise((resolve, reject) => {
             let response = {}
-            // client.verify.services(process.env.SERVICEID).verificationChecks.create({
-            //     to: `+91${userDetails.mobile}`,
-            //     code: loginOtp.otp,
-            //   }).then((verification_check) => {
-            //     if (verification_check.status == 'approved') {
-            // console.log('hereee');
+            client.verify.services(process.env.SERVICEID).verificationChecks.create({
+                to: `+91${userDetails.mobile}`,
+                code: loginOtp.otp,
+            }).then((verification_check) => {
+                if (verification_check.status == 'approved') {
+                    console.log('hereee');
             response.user = userDetails
             response.status = true
             resolve(response)
-            //   } else {
-            //       response.status = false
-            //       response.err = 'Otp Is Not Valid'
-            //       resolve(response)
-            //   }
-            // })
+                } else {
+                    response.status = false
+                    response.err = 'Otp Is Not Valid'
+                    resolve(response)
+                }
+            })
         })
 
     },
@@ -544,8 +544,8 @@ module.exports = {
                     "payment_method": "paypal"
                 },
                 "redirect_urls": {
-                    "return_url": "http://localhost:3000/success",
-                    "cancel_url": "http://localhost:3000/cancel"
+                    "return_url": "https://homybooking.online/success",
+                    "cancel_url": "https://homybooking.online/cancel"
                 },
                 "transactions": [{
                     "item_list": {

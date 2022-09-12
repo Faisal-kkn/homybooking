@@ -993,23 +993,23 @@ module.exports = {
                             "room._id": { $in: rooms }
                         }
                     },
-                    // {
-                    //     $match: {
-                    //         paymentMethod: "razorpay",
-                    //         paymentStatus: "success",
-                    //         bookingStatus: "success",
-                    //         Withdraw: false,
-                    //         CheckOutStatus: "CheckOuted"
-                    //     }
-                    // },
-                    // {
-                    //     $group: {
-                    //         _id: null,
-                    //         total: {
-                    //             $sum: "$totalAmount"
-                    //         }
-                    //     }
-                    // }
+                    {
+                        $match: {
+                            paymentMethod: "razorpay",
+                            paymentStatus: "success",
+                            bookingStatus: "success",
+                            Withdraw: false,
+                            CheckOutStatus: "CheckOuted"
+                        }
+                    },
+                    {
+                        $group: {
+                            _id: null,
+                            total: {
+                                $sum: "$totalAmount"
+                            }
+                        }
+                    }
                 ]).toArray()
                 console.log('totalAmount.razorpay');
                 console.log(totalAmount.razorpay);
