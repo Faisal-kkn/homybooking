@@ -2,7 +2,40 @@
 
 Live : <a href="https://homybooking.online/" target="blank">https://homybooking.online</a>
 
+
+## 🚀 About Project
 > This hotel room booking website is designed to help customers book their desired hotel rooms online. Customers can search by date available rooms, view photos, and book the room that best suits their needs. The website also allows customers to manage their bookings. the website provides helpful information about the hotel, its services, and nearby attractions.
+
+## Main Functionality
+
+#### User
+  - Sign up and login with otp
+  - List of Hotel and available rooms with filter
+  - Wishlist and coupon
+  - Book room with partial payment
+  - Payment gateway’s (Razorpay, paypal)
+  - List of previous bookings
+  - Wallet and history
+  - Profile managment
+  
+  
+#### Vendor
+  - Signup request to admin, admin can approve or reject
+  - Add hotel’s and rooms
+  - Hotel and rooms managment
+  - Sales Report and booking managment
+  - Withdraw amout
+  - Panel with Dashbord
+  
+
+#### Admin
+  - Panel with Dashbord
+  - Sales Report and booking details
+  - Transaction details
+  - Block and unblock hotel, vendor, user
+  - Slider and coupon managment
+
+
 
 ## Login Details
 
@@ -48,6 +81,22 @@ Go to the project directory
 
 ```bash
   cd homybooking
+```
+
+
+Create a .env file and add 👇
+
+```bash
+  SERVICEID: twilio service id
+  ACCOUNTSSID: twilio accounts id
+  AUTHTOKEN: twilio authtoken
+  KEYID: Razorpay key id
+  KEYSECRET: Razorpay key secret
+  CLIENTID: Paypal client id
+  CLIENTSECRET: Paypal client secret
+  PORT: 3000
+  DATABASE: MongoDB database link
+
 ```
 
 Install dependencies
