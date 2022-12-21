@@ -62,6 +62,11 @@ Live : <a href="https://homybooking.online/" target="blank">https://homybooking.
 ![image](https://user-images.githubusercontent.com/95907424/208876132-f6252486-0c44-434e-a939-530353bd3d83.png)
 
 
+## Used 
+
+#### *Node js  |  Mongo DB  |  Express js  |  JavaScript  |  Html5  |  Css*
+
+
 ## Prerequisites
 
 * Node.js >= v16.15.0
@@ -128,7 +133,3 @@ Start the server
       "twilio": "^3.78.0"
   }
 ```
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=faisal-kkn&show_icons=true&locale=en&layout=compact" alt="faisal-kkn" /></p>
-
-
-
