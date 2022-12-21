@@ -7,12 +7,12 @@ const { response, all } = require('../app');
 const { ObjectID, ObjectId } = require('bson');
 const { resolve } = require('path');
 var objectId = require('mongodb').ObjectId
-var instance = new Razorpay({ key_id: 'rzp_test_I6CxDb2KIEklHi', key_secret: 'bCo42BwPq4h8qiGbRq5VqSSv' });
+var instance = new Razorpay({ key_id: process.env.KEYID, key_secret: process.env.KEYSECRET });
 const paypal = require('paypal-rest-sdk');
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': 'Ad1xUsyOvUwOBGuJhSgDnbDzjHhdWqQjrtI29y957Ab-aRZmsW4AGvdJ3XtRCXSMttyYcOV66da8D_Ju',
-    'client_secret': 'EN9n1F_l8_lqjrsPOYOSfSdie3rcSiCjkskIDadmkOlHSozza5MmMX8lrTNnN_RQ3lt-XElOxmo1o5Og'
+    'client_id': process.env.CLIENTID,
+    'client_secret': process.env.CLIENTSECRET
 });
 
 module.exports = {

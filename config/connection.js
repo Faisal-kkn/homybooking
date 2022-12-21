@@ -5,7 +5,7 @@ const state = {
 }
 
 module.exports.connect = (done) => {
-    const url = 'mongodb+srv://Faisal:Kkn9946099846@cluster0.idf33go.mongodb.net/?retryWrites=true&w=majority'
+    const url = process.env.DATABASE
     const dbname = 'Hotel'
 
     mongoClient.connect(url, (err, data) => {

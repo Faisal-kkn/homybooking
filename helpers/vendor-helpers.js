@@ -305,7 +305,6 @@ module.exports = {
 
 
     },
-
     getAllBookings: (vendorId) => {
 
         return new Promise(async (resolve, reject) => {
