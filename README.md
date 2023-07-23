@@ -1,6 +1,6 @@
-<img src="https://homybooking.online/images/main-logo.png" width="200px" />
+<img src="https://homybooking.live/images/main-logo.png" width="200px" />
 
-Live : <a href="https://homybooking.online/" target="blank">https://homybooking.online</a>
+Live : <a href="https://homybooking.live/" target="blank">https://homybooking.live</a>
 
 
 ## 🚀 About Project
@@ -43,14 +43,14 @@ Live : <a href="https://homybooking.online/" target="blank">https://homybooking.
 
 | Username     | Password    | Role          | Link                                   |
 | :----------- | :---------- | :------------ | -------------------------------------- |
-| `superAdmin` | `admin@123` | Administrator | https://homybooking.online/super_admin |
+| `superAdmin` | `admin@123` | Administrator | https://homybooking.live/super_admin |
 
 
 #### Vendor login details
 
 | Email              | Password     | Role       | Link                              |
 | :----------------- | :----------  | :--------  | --------------------------------- |
-| `vendor@gmail.com` | `vendor@123` | Sub admin | https://homybooking.online/vendor  |
+| `vendor@gmail.com` | `vendor@123` | Sub admin | https://homybooking.live/vendor  |
 
 
 #### User register

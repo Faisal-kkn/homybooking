@@ -544,8 +544,8 @@ module.exports = {
                     "payment_method": "paypal"
                 },
                 "redirect_urls": {
-                    "return_url": "https://homybooking.online/success",
-                    "cancel_url": "https://homybooking.online/cancel"
+                    "return_url": "https://homybooking.live/success",
+                    "cancel_url": "https://homybooking.live/cancel"
                 },
                 "transactions": [{
                     "item_list": {
